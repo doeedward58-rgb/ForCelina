@@ -1,14 +1,12 @@
-/* =========================================================
+/* =====================================================
    FOR CELINA
-   MAIN WEBSITE JAVASCRIPT
-   DHYNE ❤️ CELINA
-   WITH BACKGROUND MUSIC
-========================================================= */
+   MAIN JAVASCRIPT
+===================================================== */
 
 
-/* =========================================================
-   FIREBASE IMPORTS
-========================================================= */
+/* =====================================================
+   FIREBASE
+===================================================== */
 
 import {
     initializeApp
@@ -22,202 +20,133 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* =========================================================
-   FIREBASE CONFIG
-========================================================= */
-
 const firebaseConfig = {
-    apiKey: "AIzaSyAq_r5vBpkGSWSqT-wa3CxJhm1V5IiqG5c",
-    authDomain: "forcelina-f0ff4.firebaseapp.com",
-    projectId: "forcelina-f0ff4",
-    storageBucket: "forcelina-f0ff4.firebasestorage.app",
-    messagingSenderId: "28022508231",
-    appId: "1:28022508231:web:2c674b62e553ef6204cce2",
-    measurementId: "G-XEBLMVB780"
+
+    apiKey:
+        "AIzaSyAq_r5vBpkGSWSqT-wa3CxJhm1V5IiqG5c",
+
+    authDomain:
+        "forcelina-f0ff4.firebaseapp.com",
+
+    projectId:
+        "forcelina-f0ff4",
+
+    storageBucket:
+        "forcelina-f0ff4.firebasestorage.app",
+
+    messagingSenderId:
+        "28022508231",
+
+    appId:
+        "1:28022508231:web:2c674b62e553ef6204cce2",
+
+    measurementId:
+        "G-XEBLMVB780"
 };
 
 
-/* =========================================================
-   INITIALIZE FIREBASE
-========================================================= */
-
 const app =
     initializeApp(firebaseConfig);
+
 
 const db =
     getFirestore(app);
 
 
-/* =========================================================
+/* =====================================================
    MUSIC
-========================================================= */
+===================================================== */
 
 const backgroundMusic =
     document.getElementById(
         "backgroundMusic"
     );
 
-const musicButton =
-    document.getElementById(
-        "musicButton"
-    );
-
-
-/* =========================================================
-   MUSIC SETTINGS
-========================================================= */
 
 if (backgroundMusic) {
 
     backgroundMusic.volume = 0.35;
 
-}
 
+    /*
+     * Try autoplay first.
+     */
 
-/* =========================================================
-   UPDATE MUSIC BUTTON
-========================================================= */
+    backgroundMusic
+        .play()
+        .then(() => {
 
-function updateMusicButton() {
+            console.log(
+                "Music started automatically 🎵"
+            );
 
-    if (!musicButton) {
-        return;
-    }
+        })
+        .catch(() => {
 
+            console.log(
+                "Browser blocked autoplay."
+            );
 
-    if (
-        backgroundMusic &&
-        !backgroundMusic.paused
-    ) {
-
-        musicButton.textContent =
-            "🔊";
-
-        musicButton.setAttribute(
-            "aria-label",
-            "Mute music"
-        );
-
-    }
-
-    else {
-
-        musicButton.textContent =
-            "🎵";
-
-        musicButton.setAttribute(
-            "aria-label",
-            "Play music"
-        );
-
-    }
+        });
 
 }
 
 
-/* =========================================================
-   PLAY MUSIC
-========================================================= */
+/* =====================================================
+   START MUSIC
+===================================================== */
 
-async function playMusic() {
+function startMusic() {
 
     if (!backgroundMusic) {
         return;
     }
 
 
-    try {
+    backgroundMusic
+        .play()
+        .then(() => {
 
-        await backgroundMusic.play();
+            console.log(
+                "Background music started ❤️"
+            );
 
+        })
+        .catch((error) => {
 
-        console.log(
-            "Background music started 🎵"
-        );
+            console.log(
+                "Music could not start:",
+                error
+            );
 
-
-        updateMusicButton();
-
-
-    } catch (error) {
-
-        console.log(
-            "Music autoplay was blocked by the browser.",
-            error
-        );
-
-
-        updateMusicButton();
-
-    }
+        });
 
 }
 
 
-/* =========================================================
-   PAUSE MUSIC
-========================================================= */
+/* =====================================================
+   PAGE NAVIGATION
+===================================================== */
 
-function pauseMusic() {
+function goToPage(
+    pageId
+) {
 
-    if (!backgroundMusic) {
-        return;
-    }
-
-
-    backgroundMusic.pause();
-
-
-    updateMusicButton();
-
-}
+    const pages =
+        document.querySelectorAll(
+            ".page"
+        );
 
 
-/* =========================================================
-   MUSIC BUTTON
-========================================================= */
+    pages.forEach(
+        (page) => {
 
-if (musicButton) {
-
-    musicButton.addEventListener(
-        "click",
-        async () => {
-
-            if (!backgroundMusic) {
-                return;
-            }
-
-
-            if (
-                backgroundMusic.paused
-            ) {
-
-                await playMusic();
-
-            }
-
-            else {
-
-                pauseMusic();
-
-            }
+            page.classList.remove(
+                "active"
+            );
 
         }
     );
-
-}
-
-
-/* =========================================================
-   PAGE NAVIGATION
-========================================================= */
-
-function goToPage(pageId) {
-
-    const currentPage =
-        document.querySelector(
-            ".page.active"
-        );
 
 
     const nextPage =
@@ -238,24 +167,6 @@ function goToPage(pageId) {
     }
 
 
-    if (
-        currentPage === nextPage
-    ) {
-
-        return;
-
-    }
-
-
-    if (currentPage) {
-
-        currentPage.classList.remove(
-            "active"
-        );
-
-    }
-
-
     nextPage.classList.add(
         "active"
     );
@@ -269,9 +180,9 @@ function goToPage(pageId) {
 }
 
 
-/* =========================================================
+/* =====================================================
    OPEN MY HEART
-========================================================= */
+===================================================== */
 
 const openHeartButton =
     document.getElementById(
@@ -283,15 +194,14 @@ if (openHeartButton) {
 
     openHeartButton.addEventListener(
         "click",
-        async () => {
+        () => {
 
             /*
-             * The user has interacted with the page,
-             * so mobile browsers are more likely to
-             * allow the music to start here.
+             * User interaction allows
+             * mobile browsers to start audio.
              */
 
-            await playMusic();
+            startMusic();
 
 
             goToPage(
@@ -304,9 +214,9 @@ if (openHeartButton) {
 }
 
 
-/* =========================================================
+/* =====================================================
    NEXT BUTTONS
-========================================================= */
+===================================================== */
 
 const nextButtons =
     document.querySelectorAll(
@@ -328,8 +238,7 @@ nextButtons.forEach(
                 if (!nextPage) {
 
                     console.error(
-                        "Missing data-next:",
-                        button
+                        "Missing data-next"
                     );
 
                     return;
@@ -348,132 +257,53 @@ nextButtons.forEach(
 );
 
 
-/* =========================================================
-   RESPONSE ELEMENTS
-========================================================= */
-
-const yesButton =
-    document.getElementById(
-        "yesButton"
-    );
-
-
-const timeButton =
-    document.getElementById(
-        "timeButton"
-    );
-
-
-const responseStatus =
-    document.getElementById(
-        "responseStatus"
-    );
-
-
-const finalMessage =
-    document.getElementById(
-        "finalMessage"
-    );
-
-
-/* =========================================================
-   BUTTON STATE
-========================================================= */
-
-function setResponseButtonsDisabled(
-    disabled
-) {
-
-    if (yesButton) {
-
-        yesButton.disabled =
-            disabled;
-
-    }
-
-
-    if (timeButton) {
-
-        timeButton.disabled =
-            disabled;
-
-    }
-
-}
-
-
-/* =========================================================
-   STATUS MESSAGE
-========================================================= */
-
-function showStatus(
-    message
-) {
-
-    if (!responseStatus) {
-        return;
-    }
-
-
-    responseStatus.textContent =
-        message;
-
-}
-
-
-/* =========================================================
+/* =====================================================
    SAVE RESPONSE
-========================================================= */
+===================================================== */
 
 async function saveResponse(
     choice
 ) {
 
-    showStatus(
-        "Saving your answer... ❤️"
-    );
+    const status =
+        document.getElementById(
+            "responseStatus"
+        );
 
 
-    setResponseButtonsDisabled(
-        true
-    );
+    if (status) {
+
+        status.textContent =
+            "Saving your answer... ❤️";
+
+    }
 
 
     try {
 
-        const responseData = {
+        await addDoc(
 
-            name:
-                "Celina",
+            collection(
+                db,
+                "responses"
+            ),
 
-            choice:
-                choice,
+            {
 
-            createdAt:
-                serverTimestamp(),
+                name:
+                    "Celina",
 
-            source:
-                "ForCelina Website"
+                choice:
+                    choice,
 
-        };
+                createdAt:
+                    serverTimestamp(),
 
+                source:
+                    "ForCelina Website"
 
-        const documentReference =
-            await addDoc(
+            }
 
-                collection(
-                    db,
-                    "responses"
-                ),
-
-                responseData
-
-            );
-
-
-        console.log(
-            "Response saved successfully:",
-            documentReference.id
         );
 
 
@@ -483,19 +313,17 @@ async function saveResponse(
     } catch (error) {
 
         console.error(
-            "Error saving response:",
+            "Firebase error:",
             error
         );
 
 
-        showStatus(
-            "We couldn't save your answer. Please try again."
-        );
+        if (status) {
 
+            status.textContent =
+                "Something went wrong. Please try again.";
 
-        setResponseButtonsDisabled(
-            false
-        );
+        }
 
 
         return false;
@@ -505,22 +333,34 @@ async function saveResponse(
 }
 
 
-/* =========================================================
-   SHOW FINAL MESSAGE
-========================================================= */
+/* =====================================================
+   FINAL MESSAGE
+===================================================== */
 
 function showFinalMessage(
     choice
 ) {
+
+    const finalMessage =
+        document.getElementById(
+            "finalMessage"
+        );
+
+
+    const status =
+        document.getElementById(
+            "responseStatus"
+        );
+
 
     if (!finalMessage) {
         return;
     }
 
 
-    showStatus(
-        ""
-    );
+    if (status) {
+        status.textContent = "";
+    }
 
 
     finalMessage.classList.add(
@@ -539,7 +379,7 @@ function showFinalMessage(
             </div>
 
             <h3>
-                You said YES.
+                You said yes.
             </h3>
 
             <p>
@@ -597,9 +437,15 @@ function showFinalMessage(
 }
 
 
-/* =========================================================
-   YES BUTTON
-========================================================= */
+/* =====================================================
+   YES
+===================================================== */
+
+const yesButton =
+    document.getElementById(
+        "yesButton"
+    );
+
 
 if (yesButton) {
 
@@ -607,9 +453,8 @@ if (yesButton) {
         "click",
         async () => {
 
-            console.log(
-                "Celina selected YES ❤️"
-            );
+            yesButton.disabled =
+                true;
 
 
             const saved =
@@ -618,14 +463,17 @@ if (yesButton) {
                 );
 
 
-            if (!saved) {
-                return;
+            if (saved) {
+
+                showFinalMessage(
+                    "yes"
+                );
+
             }
 
 
-            showFinalMessage(
-                "yes"
-            );
+            yesButton.disabled =
+                false;
 
         }
     );
@@ -633,9 +481,15 @@ if (yesButton) {
 }
 
 
-/* =========================================================
-   NEED SOME TIME BUTTON
-========================================================= */
+/* =====================================================
+   NEED SOME TIME
+===================================================== */
+
+const timeButton =
+    document.getElementById(
+        "timeButton"
+    );
+
 
 if (timeButton) {
 
@@ -643,9 +497,8 @@ if (timeButton) {
         "click",
         async () => {
 
-            console.log(
-                "Celina selected NEED SOME TIME 🤍"
-            );
+            timeButton.disabled =
+                true;
 
 
             const saved =
@@ -654,14 +507,17 @@ if (timeButton) {
                 );
 
 
-            if (!saved) {
-                return;
+            if (saved) {
+
+                showFinalMessage(
+                    "needs_time"
+                );
+
             }
 
 
-            showFinalMessage(
-                "needs_time"
-            );
+            timeButton.disabled =
+                false;
 
         }
     );
@@ -669,19 +525,19 @@ if (timeButton) {
 }
 
 
-/* =========================================================
+/* =====================================================
    FLOATING HEART
-========================================================= */
+===================================================== */
 
 function createFloatingHeart() {
 
-    const heartsContainer =
+    const container =
         document.getElementById(
             "hearts"
         );
 
 
-    if (!heartsContainer) {
+    if (!container) {
         return;
     }
 
@@ -718,7 +574,7 @@ function createFloatingHeart() {
         ) + "s";
 
 
-    heartsContainer.appendChild(
+    container.appendChild(
         heart
     );
 
@@ -735,29 +591,25 @@ function createFloatingHeart() {
 }
 
 
-/* =========================================================
-   START FLOATING HEARTS
-========================================================= */
-
 setInterval(
     createFloatingHeart,
-    1000
+    1200
 );
 
 
-/* =========================================================
+/* =====================================================
    HEART BURST
-========================================================= */
+===================================================== */
 
 function createHeartBurst() {
 
-    const heartsContainer =
+    const container =
         document.getElementById(
             "hearts"
         );
 
 
-    if (!heartsContainer) {
+    if (!container) {
         return;
     }
 
@@ -810,7 +662,7 @@ function createHeartBurst() {
             ) + "s";
 
 
-        heartsContainer.appendChild(
+        container.appendChild(
             heart
         );
 
@@ -829,65 +681,22 @@ function createHeartBurst() {
 }
 
 
-/* =========================================================
-   MUSIC EVENTS
-========================================================= */
-
-if (backgroundMusic) {
-
-    backgroundMusic.addEventListener(
-        "play",
-        () => {
-
-            updateMusicButton();
-
-        }
-    );
-
-
-    backgroundMusic.addEventListener(
-        "pause",
-        () => {
-
-            updateMusicButton();
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   INITIAL MUSIC BUTTON STATE
-========================================================= */
-
-updateMusicButton();
-
-
-/* =========================================================
-   READY
-========================================================= */
+/* =====================================================
+   CONSOLE
+===================================================== */
 
 console.log(
-    "========================================"
+    "ForCelina loaded successfully ❤️"
 );
 
 console.log(
-    "ForCelina website loaded ❤️"
-);
-
-console.log(
-    "Firebase Project:",
+    "Firebase project:",
     firebaseConfig.projectId
 );
 
 console.log(
-    "Background music:",
+    "Music:",
     backgroundMusic
-        ? "Loaded"
-        : "Not found"
-);
-
-console.log(
-    "========================================"
+        ? "background-music.mp3 loaded"
+        : "Music element missing"
 );
