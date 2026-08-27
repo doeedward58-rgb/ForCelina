@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta
@@ -16,11 +15,27 @@
         rel="stylesheet"
         href="style.css"
     >
-
 </head>
 
-
 <body>
+
+    <!-- =====================================================
+         BACKGROUND MUSIC
+    ====================================================== -->
+
+    <audio
+        id="backgroundMusic"
+        autoplay
+        loop
+        preload="auto"
+    >
+        <source
+            src="background-music.mp3"
+            type="audio/mpeg"
+        >
+
+        Your browser does not support audio.
+    </audio>
 
 
     <!-- =====================================================
@@ -28,37 +43,6 @@
     ====================================================== -->
 
     <div id="hearts"></div>
-
-
-    <!-- =====================================================
-         BACKGROUND MUSIC
-    ====================================================== -->
-
-<audio
-    id="backgroundMusic"
-    autoplay
-    loop
-    preload="auto"
->
-    <source
-        src="background-music.mp3"
-        type="audio/mpeg"
-    >
-</audio>
-
-
-    <!-- =====================================================
-         MUSIC CONTROL
-    ====================================================== -->
-
-    <button
-        id="musicButton"
-        class="music-button"
-        type="button"
-        aria-label="Music"
-    >
-        🎵
-    </button>
 
 
     <!-- =====================================================
@@ -73,49 +57,41 @@
         <div class="hero-content">
 
             <div class="small-label">
-                A LITTLE SOMETHING FOR YOU
+                A LITTLE SOMETHING FROM
             </div>
 
 
             <h1 class="main-title">
-                A Story I Want<br>
-                To Continue With You
+                A Story<br>
+                Worth Telling
             </h1>
 
 
             <div class="title-line"></div>
 
 
-            <p class="hero-subtitle">
-                Celina, this isn't just a website.
-                <br>
-                It's a little piece of my heart.
-            </p>
+            <h2 class="hero-subtitle">
+                Celina, I made something special for you.
+            </h2>
 
 
             <p class="hero-description">
-                There is something I've been wanting
-                to tell you for a long time...
+                There's something I've been wanting to tell you...
             </p>
 
 
             <button
                 id="openHeartButton"
                 class="primary-button"
-                type="button"
             >
-
                 Open My Heart
-
-                <span>
-                    ♥
-                </span>
-
+                <span>❤️</span>
             </button>
 
         </div>
 
     </section>
+
 
 
     <!-- =====================================================
@@ -135,30 +111,30 @@
 
 
             <h2>
-                It Started With a Simple Hello
+                Where It All Started
             </h2>
 
 
             <div class="story-text">
 
                 <p>
-                    If someone told me before that a random
-                    meeting on UMeet would eventually lead me
-                    here, I probably wouldn't have believed them.
+                    We met through <strong>UmiNgle</strong>.
                 </p>
 
-
                 <p>
-                    We met there, but after that,
-                    I was too shy to immediately talk to you
-                    on Instagram.
+                    At first, hindi tayo agad nag-usap sa Instagram.
+                    Siguro dahil nahihiya pa ako, and I didn't really
+                    know how to start a conversation with you.
                 </p>
 
+                <p>
+                    There were even times na nagcha-chat ako,
+                    pero hindi talaga natutuloy ang conversation.
+                </p>
 
                 <p>
-                    There were even times when I tried
-                    to start a conversation...
-                    but somehow, it never continued.
+                    And honestly...
+                    <strong>na-ghost mo pa ako ng dalawang beses.</strong>
                 </p>
 
             </div>
@@ -167,15 +143,9 @@
             <button
                 class="next-button"
                 data-next="page3"
-                type="button"
             >
-
-                Continue Our Story
-
-                <span>
-                    →
-                </span>
-
+                Continue
+                <span>♡</span>
             </button>
 
         </div>
@@ -183,8 +153,9 @@
     </section>
 
 
+
     <!-- =====================================================
-         PAGE 3 — TWO TIMES
+         PAGE 3 — NEVER GAVE UP
     ====================================================== -->
 
     <section
@@ -204,45 +175,33 @@
             </h2>
 
 
-            <div class="story-text">
-
-                <p>
-                    There were moments when I thought
-                    maybe the story wasn't meant to continue.
-                </p>
-
-
-                <p>
-                    I even got ghosted...
-                    <strong>twice.</strong>
-                </p>
-
-
-                <p>
-                    Honestly, it would have been easy
-                    to stop trying.
-                </p>
-
-
-                <p>
-                    But for some reason,
-                    I still had hope that someday,
-                    somehow, we'd get another chance.
-                </p>
-
+            <div class="highlight-heart">
+                ❤️
             </div>
 
 
-            <div class="quote-card">
-
-                <span class="quote-mark">
-                    “
-                </span>
-
+            <div class="story-text">
 
                 <p>
-                    Sometimes the person worth waiting for
-                    is the person you almost stopped hoping for.
+                    Kahit ilang beses hindi nagkatuloy,
+                    hindi ako nawalan ng pag-asa.
+                </p>
+
+                <p>
+                    One day, nakita ko ang notes mo.
+                    And somehow, I found the courage to message you.
+                </p>
+
+                <p>
+                    Hindi ko alam kung ano ang mangyayari.
+                    I just thought,
+                    <em>
+                        "Baka sakaling ngayon na."
+                    </em>
+                </p>
+
+                <p>
+                    And I was right.
                 </p>
 
             </div>
@@ -251,15 +210,9 @@
             <button
                 class="next-button"
                 data-next="page4"
-                type="button"
             >
-
-                There's More
-
-                <span>
-                    →
-                </span>
-
+                Continue
+                <span>♡</span>
             </button>
 
         </div>
@@ -267,8 +220,9 @@
     </section>
 
 
+
     <!-- =====================================================
-         PAGE 4 — THE NOTES
+         PAGE 4 — UPPER ROOM
     ====================================================== -->
 
     <section
@@ -284,58 +238,56 @@
 
 
             <h2>
-                Then I Took a Chance
+                The First Coffee
             </h2>
 
 
-            <div class="story-text">
+            <div class="memory-card">
+
+                <div class="memory-icon">
+                    ☕
+                </div>
 
                 <p>
-                    One day, I saw your Notes.
-                </p>
-
-
-                <p>
-                    I don't know what made me do it,
-                    but I finally gathered enough courage
-                    to message you.
-                </p>
-
-
-                <p>
-                    Maybe a part of me was thinking,
-                    <em>
-                        “What if this is the day
-                        everything finally starts?”
-                    </em>
-                </p>
-
-
-                <p>
-                    And this time...
-                    I wasn't wrong.
+                    I finally asked you if you wanted
+                    to have coffee with me at
+                    <strong>Upper Room</strong>.
                 </p>
 
             </div>
 
 
-            <div class="highlight-heart">
-                ♥
+            <div class="story-text">
+
+                <p>
+                    And you said yes.
+                </p>
+
+                <p>
+                    That simple "yes" became one of the
+                    moments I'll always remember.
+                </p>
+
+                <p>
+                    Then I finally saw you in person.
+                </p>
+
+                <p>
+                    Honestly...
+                    <strong>
+                        I didn't expect you to be that beautiful.
+                    </strong>
+                </p>
+
             </div>
 
 
             <button
                 class="next-button"
                 data-next="page5"
-                type="button"
             >
-
-                Keep Reading
-
-                <span>
-                    →
-                </span>
-
+                Continue
+                <span>♡</span>
             </button>
 
         </div>
@@ -343,8 +295,9 @@
     </section>
 
 
+
     <!-- =====================================================
-         PAGE 5 — UPPER ROOM
+         PAGE 5 — THREE MONTHS
     ====================================================== -->
 
     <section
@@ -360,50 +313,42 @@
 
 
             <h2>
-                Our First Coffee
+                Three Months
             </h2>
+
+
+            <div class="months-card">
+
+                <div class="number">
+                    3
+                </div>
+
+                <div class="months-text">
+                    MONTHS<br>
+                    OF GETTING<br>
+                    TO KNOW YOU
+                </div>
+
+            </div>
 
 
             <div class="story-text">
 
                 <p>
-                    Eventually, I asked you if you'd like
-                    to have coffee with me at Upper Room.
+                    Three months later, here we are.
                 </p>
 
-
                 <p>
-                    And you said yes.
+                    In those three months,
+                    mas nakilala kita,
+                    mas na-appreciate kita,
+                    and somehow,
+                    mas lalo akong nahulog sa'yo.
                 </p>
 
-
                 <p>
-                    That simple “yes” became one of the
-                    moments I'll always remember.
-                </p>
-
-
-                <p>
-                    Because that was the first time
-                    I finally got to see you in person.
-                </p>
-
-            </div>
-
-
-            <div class="memory-card">
-
-                <div class="memory-icon">
-                    ☕
-                </div>
-
-
-                <p>
-                    One coffee.
-                    <br>
-                    One conversation.
-                    <br>
-                    One memory I'll never forget.
+                    And now I think it's finally time
+                    to tell you what I've been wanting to say.
                 </p>
 
             </div>
@@ -412,15 +357,9 @@
             <button
                 class="next-button"
                 data-next="page6"
-                type="button"
             >
-
-                And Then I Saw You
-
-                <span>
-                    →
-                </span>
-
+                One More Thing
+                <span>❤️</span>
             </button>
 
         </div>
@@ -428,8 +367,9 @@
     </section>
 
 
+
     <!-- =====================================================
-         PAGE 6 — FIRST MEETING
+         PAGE 6 — CONFESSION
     ====================================================== -->
 
     <section
@@ -440,52 +380,45 @@
         <div class="story-container">
 
             <div class="chapter-label">
-                CHAPTER FIVE
+                FROM MY HEART
             </div>
 
 
-            <h2>
-                You Were Even More Beautiful
-            </h2>
+            <div class="quote-card">
+
+                <span class="quote-mark">
+                    “
+                </span>
+
+                <p>
+                    I didn't know where this story
+                    would take us when I first met you.
+                </p>
+
+                <p>
+                    But I'm really glad
+                    I didn't give up.
+                </p>
+
+            </div>
 
 
             <div class="story-text">
 
                 <p>
-                    Honestly, Celina...
-                    I wasn't prepared.
+                    Celina, I really like you.
                 </p>
-
 
                 <p>
-                    I already thought you were beautiful
-                    from the pictures I'd seen.
+                    And I want to know you even more,
+                    care for you,
+                    and make more beautiful memories with you.
                 </p>
-
 
                 <p>
-                    But seeing you in person
-                    was completely different.
+                    So after everything we've shared
+                    these past three months...
                 </p>
-
-
-                <p>
-                    You were even more beautiful
-                    than I expected.
-                </p>
-
-
-                <p>
-                    And somehow,
-                    that only made me fall for you even more.
-                </p>
-
-            </div>
-
-
-            <div class="heart-message">
-
-                You made my heart fall a little harder. ❤️
 
             </div>
 
@@ -493,15 +426,9 @@
             <button
                 class="next-button"
                 data-next="page7"
-                type="button"
             >
-
-                Continue
-
-                <span>
-                    →
-                </span>
-
+                There's Something I Want To Ask
+                <span>❤️</span>
             </button>
 
         </div>
@@ -509,155 +436,60 @@
     </section>
 
 
+
     <!-- =====================================================
-         PAGE 7 — THREE MONTHS
+         PAGE 7 — QUESTION
     ====================================================== -->
 
     <section
         id="page7"
-        class="page"
-    >
-
-        <div class="story-container">
-
-            <div class="chapter-label">
-                CHAPTER SIX
-            </div>
-
-
-            <h2>
-                Three Months Later
-            </h2>
-
-
-            <div class="story-text">
-
-                <p>
-                    And now, somehow,
-                    three months have already passed.
-                </p>
-
-
-                <p>
-                    Three months of getting to know you.
-                </p>
-
-
-                <p>
-                    Three months of conversations,
-                    laughs, little moments,
-                    and memories.
-                </p>
-
-
-                <p>
-                    Somewhere along the way,
-                    you became someone
-                    I genuinely care about.
-                </p>
-
-            </div>
-
-
-            <div class="months-card">
-
-                <div class="number">
-                    3
-                </div>
-
-
-                <div class="months-text">
-
-                    MONTHS
-                    <br>
-                    OF US
-
-                </div>
-
-            </div>
-
-
-            <button
-                class="next-button"
-                data-next="page8"
-                type="button"
-            >
-
-                There's Something I Need To Ask
-
-                <span>
-                    →
-                </span>
-
-            </button>
-
-        </div>
-
-    </section>
-
-
-    <!-- =====================================================
-         PAGE 8 — THE QUESTION
-    ====================================================== -->
-
-    <section
-        id="page8"
         class="page question-page"
     >
 
         <div class="question-container">
 
-            <div class="chapter-label">
-                CHAPTER SEVEN
+            <div class="question-heart">
+                ♡
             </div>
 
 
-            <div class="question-heart">
-                ♥
+            <div class="chapter-label">
+                ONE LAST QUESTION
             </div>
 
 
             <h2>
-                So, Celina...
+                Celina...
             </h2>
-
-
-            <p class="question-intro">
-
-                After everything that brought us here,
-                there's one thing I've been wanting to ask you.
-
-            </p>
 
 
             <div class="question-line"></div>
 
 
-            <h1 class="big-question">
+            <p class="question-intro">
+                I just want to be honest about how I feel
+                and ask if you'll give me the chance to
+                know you even more deeply,
+                care for you,
+                and make more beautiful memories with you.
+            </p>
 
-                Will you let me<br>
-                court you?
 
-            </h1>
+            <div class="big-question">
+                Pwede ba<br>
+                akong manligaw?
+            </div>
 
 
             <p class="question-message">
-
-                I just want to be honest about how I feel
-                and ask if you'll give me the chance to
-                know you even more deeply, care for you,
-                and make more beautiful memories with you.
-
+                Whatever your answer is,
+                I promise to respect how you feel.
             </p>
 
 
             <p class="no-pressure">
-
-                You don't have to feel pressured.
-                <br>
-                Whatever your answer is,
-                I'll respect it.
-
+                No pressure. Take your time.
+                I just wanted you to know how I truly feel.
             </p>
 
 
@@ -666,30 +498,18 @@
                 <button
                     id="yesButton"
                     class="answer-button yes-button"
-                    type="button"
                 >
-
                     Yes, Dhyne
-
-                    <span>
-                        ❤️
-                    </span>
-
+                    <span>💗</span>
                 </button>
 
 
                 <button
                     id="timeButton"
                     class="answer-button time-button"
-                    type="button"
                 >
-
-                    I need some time
-
-                    <span>
-                        🤍
-                    </span>
-
+                    I Need Some Time
+                    <span>🤍</span>
                 </button>
 
             </div>
@@ -711,15 +531,15 @@
     </section>
 
 
+
     <!-- =====================================================
-         MAIN JAVASCRIPT
+         JAVASCRIPT
     ====================================================== -->
 
     <script
         type="module"
         src="script.js"
     ></script>
-
 
 </body>
 
