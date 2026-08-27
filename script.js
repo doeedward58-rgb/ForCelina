@@ -2,6 +2,7 @@
    FOR CELINA
    MAIN WEBSITE JAVASCRIPT
    DHYNE ❤️ CELINA
+   WITH BACKGROUND MUSIC
 ========================================================= */
 
 
@@ -40,9 +41,171 @@ const firebaseConfig = {
    INITIALIZE FIREBASE
 ========================================================= */
 
-const app = initializeApp(firebaseConfig);
+const app =
+    initializeApp(firebaseConfig);
 
-const db = getFirestore(app);
+const db =
+    getFirestore(app);
+
+
+/* =========================================================
+   MUSIC
+========================================================= */
+
+const backgroundMusic =
+    document.getElementById(
+        "backgroundMusic"
+    );
+
+const musicButton =
+    document.getElementById(
+        "musicButton"
+    );
+
+
+/* =========================================================
+   MUSIC SETTINGS
+========================================================= */
+
+if (backgroundMusic) {
+
+    backgroundMusic.volume = 0.35;
+
+}
+
+
+/* =========================================================
+   UPDATE MUSIC BUTTON
+========================================================= */
+
+function updateMusicButton() {
+
+    if (!musicButton) {
+        return;
+    }
+
+
+    if (
+        backgroundMusic &&
+        !backgroundMusic.paused
+    ) {
+
+        musicButton.textContent =
+            "🔊";
+
+        musicButton.setAttribute(
+            "aria-label",
+            "Mute music"
+        );
+
+    }
+
+    else {
+
+        musicButton.textContent =
+            "🎵";
+
+        musicButton.setAttribute(
+            "aria-label",
+            "Play music"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   PLAY MUSIC
+========================================================= */
+
+async function playMusic() {
+
+    if (!backgroundMusic) {
+        return;
+    }
+
+
+    try {
+
+        await backgroundMusic.play();
+
+
+        console.log(
+            "Background music started 🎵"
+        );
+
+
+        updateMusicButton();
+
+
+    } catch (error) {
+
+        console.log(
+            "Music autoplay was blocked by the browser.",
+            error
+        );
+
+
+        updateMusicButton();
+
+    }
+
+}
+
+
+/* =========================================================
+   PAUSE MUSIC
+========================================================= */
+
+function pauseMusic() {
+
+    if (!backgroundMusic) {
+        return;
+    }
+
+
+    backgroundMusic.pause();
+
+
+    updateMusicButton();
+
+}
+
+
+/* =========================================================
+   MUSIC BUTTON
+========================================================= */
+
+if (musicButton) {
+
+    musicButton.addEventListener(
+        "click",
+        async () => {
+
+            if (!backgroundMusic) {
+                return;
+            }
+
+
+            if (
+                backgroundMusic.paused
+            ) {
+
+                await playMusic();
+
+            }
+
+            else {
+
+                pauseMusic();
+
+            }
+
+        }
+    );
+
+}
 
 
 /* =========================================================
@@ -52,16 +215,21 @@ const db = getFirestore(app);
 function goToPage(pageId) {
 
     const currentPage =
-        document.querySelector(".page.active");
+        document.querySelector(
+            ".page.active"
+        );
+
 
     const nextPage =
-        document.getElementById(pageId);
+        document.getElementById(
+            pageId
+        );
 
 
     if (!nextPage) {
 
         console.error(
-            "Page does not exist:",
+            "Page not found:",
             pageId
         );
 
@@ -70,8 +238,12 @@ function goToPage(pageId) {
     }
 
 
-    if (currentPage === nextPage) {
+    if (
+        currentPage === nextPage
+    ) {
+
         return;
+
     }
 
 
@@ -111,9 +283,20 @@ if (openHeartButton) {
 
     openHeartButton.addEventListener(
         "click",
-        () => {
+        async () => {
 
-            goToPage("page2");
+            /*
+             * The user has interacted with the page,
+             * so mobile browsers are more likely to
+             * allow the music to start here.
+             */
+
+            await playMusic();
+
+
+            goToPage(
+                "page2"
+            );
 
         }
     );
@@ -220,7 +403,7 @@ function setResponseButtonsDisabled(
 
 
 /* =========================================================
-   SHOW STATUS
+   STATUS MESSAGE
 ========================================================= */
 
 function showStatus(
@@ -239,7 +422,7 @@ function showStatus(
 
 
 /* =========================================================
-   SAVE RESPONSE TO FIRESTORE
+   SAVE RESPONSE
 ========================================================= */
 
 async function saveResponse(
@@ -289,7 +472,7 @@ async function saveResponse(
 
 
         console.log(
-            "Response saved:",
+            "Response saved successfully:",
             documentReference.id
         );
 
@@ -300,7 +483,7 @@ async function saveResponse(
     } catch (error) {
 
         console.error(
-            "Unable to save response:",
+            "Error saving response:",
             error
         );
 
@@ -323,7 +506,7 @@ async function saveResponse(
 
 
 /* =========================================================
-   SHOW FINAL ANSWER
+   SHOW FINAL MESSAGE
 ========================================================= */
 
 function showFinalMessage(
@@ -335,7 +518,9 @@ function showFinalMessage(
     }
 
 
-    showStatus("");
+    showStatus(
+        ""
+    );
 
 
     finalMessage.classList.add(
@@ -423,7 +608,7 @@ if (yesButton) {
         async () => {
 
             console.log(
-                "YES button clicked ❤️"
+                "Celina selected YES ❤️"
             );
 
 
@@ -459,7 +644,7 @@ if (timeButton) {
         async () => {
 
             console.log(
-                "NEED SOME TIME button clicked 🤍"
+                "Celina selected NEED SOME TIME 🤍"
             );
 
 
@@ -485,7 +670,7 @@ if (timeButton) {
 
 
 /* =========================================================
-   CREATE FLOATING HEART
+   FLOATING HEART
 ========================================================= */
 
 function createFloatingHeart() {
@@ -645,11 +830,46 @@ function createHeartBurst() {
 
 
 /* =========================================================
-   FIREBASE / WEBSITE TEST
+   MUSIC EVENTS
+========================================================= */
+
+if (backgroundMusic) {
+
+    backgroundMusic.addEventListener(
+        "play",
+        () => {
+
+            updateMusicButton();
+
+        }
+    );
+
+
+    backgroundMusic.addEventListener(
+        "pause",
+        () => {
+
+            updateMusicButton();
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   INITIAL MUSIC BUTTON STATE
+========================================================= */
+
+updateMusicButton();
+
+
+/* =========================================================
+   READY
 ========================================================= */
 
 console.log(
-    "================================="
+    "========================================"
 );
 
 console.log(
@@ -662,10 +882,12 @@ console.log(
 );
 
 console.log(
-    "Response collection:",
-    "responses"
+    "Background music:",
+    backgroundMusic
+        ? "Loaded"
+        : "Not found"
 );
 
 console.log(
-    "================================="
+    "========================================"
 );
