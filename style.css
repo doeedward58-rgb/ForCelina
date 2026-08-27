@@ -1,7 +1,7 @@
 /* =========================================================
    FOR CELINA
    MAIN WEBSITE STYLES
-   Dhyne → Celina ❤️
+   DHYNE ❤️ CELINA
 ========================================================= */
 
 
@@ -126,7 +126,7 @@ body {
 
 
 /* =========================================================
-   FLOATING HEART CONTAINER
+   FLOATING HEARTS
 ========================================================= */
 
 #hearts {
@@ -187,6 +187,109 @@ body {
 
         opacity: 0;
     }
+
+}
+
+
+/* =========================================================
+   MUSIC BUTTON
+========================================================= */
+
+.music-button {
+    position: fixed;
+
+    top: 24px;
+    right: 24px;
+
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            105,
+            150,
+            0.35
+        );
+
+    background:
+        rgba(
+            35,
+            5,
+            18,
+            0.82
+        );
+
+    color: #fff;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    box-shadow:
+        0 8px 30px
+        rgba(
+            0,
+            0,
+            0,
+            0.3
+        );
+
+    z-index: 100;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.music-button:hover {
+
+    transform:
+        translateY(-3px)
+        scale(1.04);
+
+    border-color:
+        #ff6094;
+
+    background:
+        rgba(
+            255,
+            70,
+            125,
+            0.12
+        );
+
+    box-shadow:
+        0 12px 35px
+        rgba(
+            255,
+            60,
+            125,
+            0.2
+        );
+
+}
+
+.music-button:active {
+
+    transform:
+        scale(0.94);
 
 }
 
@@ -294,28 +397,13 @@ body {
 
 
 /* =========================================================
-   BUTTONS
+   PRIMARY BUTTON
 ========================================================= */
 
-.primary-button,
-.next-button,
-.answer-button {
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    cursor: pointer;
-
-    transition:
-        transform 0.3s ease,
-        background 0.3s ease,
-        box-shadow 0.3s ease,
-        border-color 0.3s ease;
-}
-
 .primary-button {
-    border: 1px solid #e85a8a;
+    border:
+        1px solid
+        #e85a8a;
 
     background:
         linear-gradient(
@@ -336,9 +424,20 @@ body {
 
     font-weight: 600;
 
+    cursor: pointer;
+
     box-shadow:
         0 12px 40px
-        rgba(225, 39, 102, 0.28);
+        rgba(
+            225,
+            39,
+            102,
+            0.28
+        );
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .primary-button span {
@@ -346,15 +445,22 @@ body {
 }
 
 .primary-button:hover {
-    transform: translateY(-4px);
+    transform:
+        translateY(-4px);
 
     box-shadow:
         0 18px 50px
-        rgba(255, 58, 125, 0.42);
+        rgba(
+            255,
+            58,
+            125,
+            0.42
+        );
 }
 
 .primary-button:active {
-    transform: translateY(-1px);
+    transform:
+        translateY(-1px);
 }
 
 
@@ -454,7 +560,9 @@ body {
 
     border-radius: 40px;
 
-    border: 1px solid #a94c70;
+    border:
+        1px solid
+        #a94c70;
 
     background:
         rgba(
@@ -467,6 +575,14 @@ body {
     color: #fff5f8;
 
     font-size: 15px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .next-button span {
@@ -476,9 +592,11 @@ body {
 }
 
 .next-button:hover {
-    transform: translateY(-3px);
+    transform:
+        translateY(-3px);
 
-    border-color: #ff5c91;
+    border-color:
+        #ff5c91;
 
     background:
         rgba(
@@ -634,11 +752,13 @@ body {
 
     0%,
     100% {
-        transform: scale(1);
+        transform:
+            scale(1);
     }
 
     50% {
-        transform: scale(1.08);
+        transform:
+            scale(1.08);
     }
 
 }
@@ -994,6 +1114,14 @@ body {
     font-size: 16px;
 
     font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease,
+        border-color 0.3s ease;
 }
 
 .yes-button {
@@ -1021,7 +1149,8 @@ body {
 }
 
 .yes-button:hover {
-    transform: translateY(-4px);
+    transform:
+        translateY(-4px);
 
     box-shadow:
         0 20px 55px
@@ -1050,7 +1179,8 @@ body {
 }
 
 .time-button:hover {
-    transform: translateY(-4px);
+    transform:
+        translateY(-4px);
 
     border-color:
         #c77a99;
@@ -1070,13 +1200,17 @@ body {
 ========================================================= */
 
 .answer-button:disabled {
-    cursor: not-allowed;
+    cursor:
+        not-allowed;
 
-    opacity: 0.55;
+    opacity:
+        0.55;
 
-    transform: none !important;
+    transform:
+        none !important;
 
-    box-shadow: none;
+    box-shadow:
+        none;
 }
 
 
@@ -1135,21 +1269,25 @@ body {
 
     opacity: 0;
 
-    transform: translateY(20px);
+    transform:
+        translateY(20px);
 
     transition:
         opacity 0.6s ease,
         transform 0.6s ease;
 
-    pointer-events: none;
+    pointer-events:
+        none;
 }
 
 .final-message.show {
     opacity: 1;
 
-    transform: translateY(0);
+    transform:
+        translateY(0);
 
-    pointer-events: auto;
+    pointer-events:
+        auto;
 }
 
 .final-message h3 {
@@ -1231,6 +1369,16 @@ body {
         gap: 16px;
     }
 
+    .music-button {
+        top: 18px;
+        right: 18px;
+
+        width: 48px;
+        height: 48px;
+
+        font-size: 18px;
+    }
+
 }
 
 
@@ -1244,6 +1392,16 @@ body {
         padding:
             55px
             17px;
+    }
+
+    .music-button {
+        top: 14px;
+        right: 14px;
+
+        width: 46px;
+        height: 46px;
+
+        font-size: 17px;
     }
 
     .small-label {
@@ -1261,7 +1419,9 @@ body {
     }
 
     .title-line {
-        margin: 28px auto;
+        margin:
+            28px
+            auto;
     }
 
     .hero-subtitle {
@@ -1311,7 +1471,9 @@ body {
     }
 
     .memory-card {
-        padding: 28px 20px;
+        padding:
+            28px
+            20px;
     }
 
     .months-card {
