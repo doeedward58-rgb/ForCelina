@@ -1,13 +1,6 @@
-/* =========================================================
-   DHYNE'S PRIVATE DASHBOARD
-   ADMIN JAVASCRIPT
-   Firebase Authentication + Firestore
-========================================================= */
-
-
-/* =========================================================
-   FIREBASE IMPORTS
-========================================================= */
+/* =====================================================
+   FOR CELINA — ADMIN
+===================================================== */
 
 import {
     initializeApp
@@ -30,24 +23,34 @@ import {
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
 
-/* =========================================================
-   FIREBASE CONFIG
-========================================================= */
+/* =====================================================
+   FIREBASE
+===================================================== */
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAq_r5vBpkGSWSqT-wa3CxJhm1V5IiqG5c",
-    authDomain: "forcelina-f0ff4.firebaseapp.com",
-    projectId: "forcelina-f0ff4",
-    storageBucket: "forcelina-f0ff4.firebasestorage.app",
-    messagingSenderId: "28022508231",
-    appId: "1:28022508231:web:2c674b62e553ef6204cce2",
-    measurementId: "G-XEBLMVB780"
+
+    apiKey:
+        "AIzaSyAq_r5vBpkGSWSqT-wa3CxJhm1V5IiqG5c",
+
+    authDomain:
+        "forcelina-f0ff4.firebaseapp.com",
+
+    projectId:
+        "forcelina-f0ff4",
+
+    storageBucket:
+        "forcelina-f0ff4.firebasestorage.app",
+
+    messagingSenderId:
+        "28022508231",
+
+    appId:
+        "1:28022508231:web:2c674b62e553ef6204cce2",
+
+    measurementId:
+        "G-XEBLMVB780"
 };
 
-
-/* =========================================================
-   INITIALIZE FIREBASE
-========================================================= */
 
 const app =
     initializeApp(firebaseConfig);
@@ -61,9 +64,9 @@ const db =
     getFirestore(app);
 
 
-/* =========================================================
-   GET HTML ELEMENTS
-========================================================= */
+/* =====================================================
+   ELEMENTS
+===================================================== */
 
 const loginSection =
     document.getElementById(
@@ -77,21 +80,15 @@ const dashboardSection =
     );
 
 
-const loginForm =
-    document.getElementById(
-        "loginForm"
-    );
-
-
 const emailInput =
     document.getElementById(
-        "email"
+        "emailInput"
     );
 
 
 const passwordInput =
     document.getElementById(
-        "password"
+        "passwordInput"
     );
 
 
@@ -101,21 +98,27 @@ const loginButton =
     );
 
 
-const loginError =
+const loginStatus =
     document.getElementById(
-        "loginError"
+        "loginStatus"
     );
 
 
-const loading =
+const answerTitle =
     document.getElementById(
-        "loading"
+        "answerTitle"
     );
 
 
-const answerArea =
+const answerText =
     document.getElementById(
-        "answerArea"
+        "answerText"
+    );
+
+
+const responseTime =
+    document.getElementById(
+        "responseTime"
     );
 
 
@@ -131,200 +134,42 @@ const logoutButton =
     );
 
 
-/* =========================================================
-   SHOW LOGIN
-========================================================= */
-
-function showLogin() {
-
-    if (loginSection) {
-
-        loginSection.classList.add(
-            "active"
-        );
-
-    }
-
-
-    if (dashboardSection) {
-
-        dashboardSection.classList.remove(
-            "active"
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   SHOW DASHBOARD
-========================================================= */
-
-function showDashboard() {
-
-    if (loginSection) {
-
-        loginSection.classList.remove(
-            "active"
-        );
-
-    }
-
-
-    if (dashboardSection) {
-
-        dashboardSection.classList.add(
-            "active"
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   LOGIN ERROR MESSAGE
-========================================================= */
-
-function showLoginError(
-    message
-) {
-
-    if (!loginError) {
-        return;
-    }
-
-
-    loginError.textContent =
-        message;
-
-}
-
-
-/* =========================================================
-   FIREBASE AUTH ERROR
-========================================================= */
-
-function getFriendlyAuthError(
-    error
-) {
-
-    if (!error) {
-
-        return "Something went wrong.";
-
-    }
-
-
-    console.error(
-        "Firebase Authentication Error:",
-        error
+const dashboardStatus =
+    document.getElementById(
+        "dashboardStatus"
     );
 
 
-    switch (error.code) {
-
-        case "auth/invalid-credential":
-
-            return "Invalid email or password.";
-
-
-        case "auth/invalid-email":
-
-            return "Please enter a valid email address.";
-
-
-        case "auth/user-not-found":
-
-            return "No account was found with this email.";
-
-
-        case "auth/wrong-password":
-
-            return "Incorrect password.";
-
-
-        case "auth/too-many-requests":
-
-            return "Too many login attempts. Please try again later.";
-
-
-        case "auth/network-request-failed":
-
-            return "Network error. Please check your internet connection.";
-
-
-        case "auth/api-key-not-valid":
-
-            return "Firebase API key is not valid. Check your Firebase Web App configuration.";
-
-
-        case "auth/operation-not-allowed":
-
-            return "Email/Password Authentication is not enabled in Firebase.";
-
-
-        default:
-
-            return (
-                error.message ||
-                "Unable to login."
-            );
-
-    }
-
-}
-
-
-/* =========================================================
+/* =====================================================
    LOGIN
-========================================================= */
+===================================================== */
 
-if (loginForm) {
+if (loginButton) {
 
-    loginForm.addEventListener(
-        "submit",
-        async (event) => {
-
-            event.preventDefault();
-
+    loginButton.addEventListener(
+        "click",
+        async () => {
 
             const email =
-                emailInput
-                    ? emailInput.value.trim()
-                    : "";
+                emailInput.value.trim();
 
 
             const password =
-                passwordInput
-                    ? passwordInput.value
-                    : "";
+                passwordInput.value;
 
 
             if (!email || !password) {
 
-                showLoginError(
-                    "Please enter your email and password."
-                );
+                loginStatus.textContent =
+                    "Please enter your email and password.";
 
                 return;
 
             }
 
 
-            if (loginButton) {
-
-                loginButton.disabled =
-                    true;
-
-                loginButton.innerHTML =
-                    "Logging in...";
-
-            }
-
-
-            showLoginError("");
+            loginStatus.textContent =
+                "Logging in...";
 
 
             try {
@@ -336,29 +181,18 @@ if (loginForm) {
                 );
 
 
-                console.log(
-                    "Login successful."
-                );
-
+                loginStatus.textContent =
+                    "";
 
             } catch (error) {
 
-                showLoginError(
-                    getFriendlyAuthError(
-                        error
-                    )
+                console.error(
+                    error
                 );
 
 
-                if (loginButton) {
-
-                    loginButton.disabled =
-                        false;
-
-                    loginButton.innerHTML =
-                        'Enter Dashboard <span>→</span>';
-
-                }
+                loginStatus.textContent =
+                    "Invalid email or password.";
 
             }
 
@@ -368,9 +202,9 @@ if (loginForm) {
 }
 
 
-/* =========================================================
-   AUTH STATE LISTENER
-========================================================= */
+/* =====================================================
+   AUTH STATE
+===================================================== */
 
 onAuthStateChanged(
     auth,
@@ -378,13 +212,12 @@ onAuthStateChanged(
 
         if (user) {
 
-            console.log(
-                "Authenticated user:",
-                user.uid
-            );
+            loginSection.style.display =
+                "none";
 
 
-            showDashboard();
+            dashboardSection.style.display =
+                "block";
 
 
             loadLatestResponse();
@@ -393,12 +226,12 @@ onAuthStateChanged(
 
         else {
 
-            console.log(
-                "No authenticated user."
-            );
+            loginSection.style.display =
+                "flex";
 
 
-            showLogin();
+            dashboardSection.style.display =
+                "none";
 
         }
 
@@ -406,53 +239,29 @@ onAuthStateChanged(
 );
 
 
-/* =========================================================
-   LOAD LATEST RESPONSE
-========================================================= */
+/* =====================================================
+   LOAD RESPONSE
+===================================================== */
 
 async function loadLatestResponse() {
 
-    if (loading) {
+    if (dashboardStatus) {
 
-        loading.style.display =
-            "flex";
-
-        loading.innerHTML = `
-
-            <div class="loading-heart">
-                ♥
-            </div>
-
-            <p>
-                Checking for Celina's answer...
-            </p>
-
-        `;
-
-    }
-
-
-    if (answerArea) {
-
-        answerArea.innerHTML =
-            "";
+        dashboardStatus.textContent =
+            "Checking for her answer... ❤️";
 
     }
 
 
     try {
 
-        const responsesCollection =
-            collection(
-                db,
-                "responses"
-            );
-
-
-        const responseQuery =
+        const responsesQuery =
             query(
 
-                responsesCollection,
+                collection(
+                    db,
+                    "responses"
+                ),
 
                 orderBy(
                     "createdAt",
@@ -466,391 +275,108 @@ async function loadLatestResponse() {
 
         const snapshot =
             await getDocs(
-                responseQuery
+                responsesQuery
             );
 
 
-        if (loading) {
+        if (
+            snapshot.empty
+        ) {
 
-            loading.style.display =
-                "none";
-
-        }
+            answerTitle.textContent =
+                "No answer yet... ❤️";
 
 
-        if (snapshot.empty) {
+            answerText.textContent =
+                "Waiting for Celina's response.";
 
-            showNoResponse();
+
+            responseTime.textContent =
+                "—";
+
+
+            dashboardStatus.textContent =
+                "";
 
             return;
 
         }
 
 
-        const latestDocument =
-            snapshot.docs[0];
+        const response =
+            snapshot.docs[0].data();
 
 
-        const latestResponse =
-            latestDocument.data();
+        const choice =
+            response.choice;
 
 
-        console.log(
-            "Latest response:",
-            latestResponse
-        );
+        if (
+            choice === "yes"
+        ) {
+
+            answerTitle.textContent =
+                "She Said YES! 💗";
 
 
-        showResponse(
-            latestResponse
-        );
-
-
-    } catch (error) {
-
-        console.error(
-            "Firestore error:",
-            error
-        );
-
-
-        if (loading) {
-
-            loading.style.display =
-                "none";
+            answerText.textContent =
+                "Celina gave you a chance. This is the beginning of something beautiful.";
 
         }
 
+        else {
 
-        showFirestoreError(
-            error
-        );
+            answerTitle.textContent =
+                "She Needs Some Time 🤍";
 
-    }
 
-}
-
-
-/* =========================================================
-   NO RESPONSE YET
-========================================================= */
-
-function showNoResponse() {
-
-    if (!answerArea) {
-        return;
-    }
-
-
-    answerArea.innerHTML = `
-
-        <div class="answer-box">
-
-            <div class="answer-icon">
-                💌
-            </div>
-
-            <h2>
-                Not Yet...
-            </h2>
-
-            <p>
-                Celina hasn't answered yet.
-            </p>
-
-            <p>
-                Be patient, Dhyne.
-                Your story is still being written. ❤️
-            </p>
-
-        </div>
-
-    `;
-
-}
-
-
-/* =========================================================
-   SHOW CELINA'S RESPONSE
-========================================================= */
-
-function showResponse(
-    data
-) {
-
-    if (!answerArea) {
-        return;
-    }
-
-
-    const choice =
-        data.choice;
-
-
-    const isYes =
-        choice === "yes";
-
-
-    const isNeedsTime =
-        choice === "needs_time";
-
-
-    let title =
-        "Response Received";
-
-
-    let icon =
-        "💌";
-
-
-    let message =
-        "Celina has sent a response.";
-
-
-    if (isYes) {
-
-        title =
-            "She Said YES! ❤️";
-
-
-        icon =
-            "❤️";
-
-
-        message =
-            "Celina gave you a chance. This is the beginning of something beautiful.";
-
-    }
-
-
-    else if (isNeedsTime) {
-
-        title =
-            "She Needs Some Time 🤍";
-
-
-        icon =
-            "🤍";
-
-
-        message =
-            "Celina needs some time. Respect her feelings and give her the space she needs.";
-
-    }
-
-
-    else {
-
-        title =
-            "Response Received";
-
-
-        icon =
-            "💌";
-
-    }
-
-
-    const responseDate =
-        formatTimestamp(
-            data.createdAt
-        );
-
-
-    answerArea.innerHTML = `
-
-        <div
-            class="answer-box ${
-                isYes
-                    ? "yes-answer"
-                    : ""
-            }"
-        >
-
-            <div class="answer-icon">
-                ${icon}
-            </div>
-
-            <h2>
-                ${title}
-            </h2>
-
-            <p>
-                ${message}
-            </p>
-
-            <div class="answer-date">
-
-                Response received:
-
-                <br>
-
-                ${escapeHtml(
-                    responseDate
-                )}
-
-            </div>
-
-        </div>
-
-    `;
-
-
-    if (isYes) {
-
-        createAdminHeartBurst();
-
-    }
-
-}
-
-
-/* =========================================================
-   FORMAT FIREBASE TIMESTAMP
-========================================================= */
-
-function formatTimestamp(
-    timestamp
-) {
-
-    if (!timestamp) {
-
-        return "Date unavailable";
-
-    }
-
-
-    try {
-
-        if (
-            typeof timestamp.toDate ===
-            "function"
-        ) {
-
-            return timestamp
-                .toDate()
-                .toLocaleString();
+            answerText.textContent =
+                "Celina asked for some time. Respect her answer and give her the space she needs.";
 
         }
 
 
         if (
-            timestamp.seconds
+            response.createdAt
         ) {
 
-            const milliseconds =
-                timestamp.seconds *
-                1000;
+            responseTime.textContent =
+                response.createdAt
+                    .toDate()
+                    .toLocaleString();
 
+        }
 
-            return new Date(
-                milliseconds
-            ).toLocaleString();
+        else {
+
+            responseTime.textContent =
+                "Just now";
 
         }
 
 
+        dashboardStatus.textContent =
+            "";
+
     } catch (error) {
 
         console.error(
-            "Timestamp formatting error:",
+            "Error loading response:",
             error
         );
 
+
+        dashboardStatus.textContent =
+            "Unable to load response. Check Firestore rules.";
+
     }
-
-
-    return "Date unavailable";
 
 }
 
 
-/* =========================================================
-   FIRESTORE ERROR
-========================================================= */
-
-function showFirestoreError(
-    error
-) {
-
-    if (!answerArea) {
-        return;
-    }
-
-
-    let message =
-        "Unable to load Celina's response.";
-
-
-    if (
-        error &&
-        error.code ===
-            "permission-denied"
-    ) {
-
-        message =
-            "Firestore permission denied. Check your Firestore Security Rules.";
-
-    }
-
-
-    else if (
-        error &&
-        error.code ===
-            "failed-precondition"
-    ) {
-
-        message =
-            "Firestore needs an index for this query.";
-
-    }
-
-
-    else if (
-        error &&
-        error.code ===
-            "unavailable"
-    ) {
-
-        message =
-            "Firebase is temporarily unavailable. Please try again.";
-
-    }
-
-
-    answerArea.innerHTML = `
-
-        <div class="answer-box">
-
-            <div class="answer-icon">
-                ⚠️
-            </div>
-
-            <h2>
-                Something Went Wrong
-            </h2>
-
-            <p>
-                ${escapeHtml(
-                    message
-                )}
-            </p>
-
-            <p>
-                Open the browser console
-                for the technical error.
-            </p>
-
-        </div>
-
-    `;
-
-}
-
-
-/* =========================================================
-   REFRESH BUTTON
-========================================================= */
+/* =====================================================
+   REFRESH
+===================================================== */
 
 if (refreshButton) {
 
@@ -866,9 +392,9 @@ if (refreshButton) {
 }
 
 
-/* =========================================================
-   LOGOUT BUTTON
-========================================================= */
+/* =====================================================
+   LOGOUT
+===================================================== */
 
 if (logoutButton) {
 
@@ -882,16 +408,9 @@ if (logoutButton) {
                     auth
                 );
 
-
-                console.log(
-                    "Logged out."
-                );
-
-
             } catch (error) {
 
                 console.error(
-                    "Logout error:",
                     error
                 );
 
@@ -901,230 +420,3 @@ if (logoutButton) {
     );
 
 }
-
-
-/* =========================================================
-   ADMIN FLOATING HEART
-========================================================= */
-
-function createAdminFloatingHeart() {
-
-    const container =
-        document.getElementById(
-            "adminHearts"
-        );
-
-
-    if (!container) {
-        return;
-    }
-
-
-    const heart =
-        document.createElement(
-            "div"
-        );
-
-
-    heart.className =
-        "admin-floating-heart";
-
-
-    heart.textContent =
-        "♥";
-
-
-    heart.style.left =
-        Math.random() * 100 + "%";
-
-
-    heart.style.fontSize =
-        (
-            10 +
-            Math.random() * 15
-        ) + "px";
-
-
-    heart.style.animationDuration =
-        (
-            5 +
-            Math.random() * 5
-        ) + "s";
-
-
-    container.appendChild(
-        heart
-    );
-
-
-    setTimeout(
-        () => {
-
-            heart.remove();
-
-        },
-        11000
-    );
-
-}
-
-
-/* =========================================================
-   ADMIN HEART BURST
-========================================================= */
-
-function createAdminHeartBurst() {
-
-    const container =
-        document.getElementById(
-            "adminHearts"
-        );
-
-
-    if (!container) {
-        return;
-    }
-
-
-    for (
-        let i = 0;
-        i < 25;
-        i++
-    ) {
-
-        const heart =
-            document.createElement(
-                "div"
-            );
-
-
-        heart.className =
-            "admin-floating-heart";
-
-
-        heart.textContent =
-            "♥";
-
-
-        heart.style.left =
-            (
-                25 +
-                Math.random() * 50
-            ) + "%";
-
-
-        heart.style.bottom =
-            (
-                15 +
-                Math.random() * 30
-            ) + "%";
-
-
-        heart.style.fontSize =
-            (
-                12 +
-                Math.random() * 20
-            ) + "px";
-
-
-        heart.style.animationDuration =
-            (
-                2 +
-                Math.random() * 3
-            ) + "s";
-
-
-        container.appendChild(
-            heart
-        );
-
-
-        setTimeout(
-            () => {
-
-                heart.remove();
-
-            },
-            6000
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   START ADMIN HEARTS
-========================================================= */
-
-setInterval(
-    createAdminFloatingHeart,
-    1200
-);
-
-
-/* =========================================================
-   HTML ESCAPE
-========================================================= */
-
-function escapeHtml(
-    value
-) {
-
-    return String(
-        value
-    )
-
-        .replaceAll(
-            "&",
-            "&amp;"
-        )
-
-        .replaceAll(
-            "<",
-            "&lt;"
-        )
-
-        .replaceAll(
-            ">",
-            "&gt;"
-        )
-
-        .replaceAll(
-            '"',
-            "&quot;"
-        )
-
-        .replaceAll(
-            "'",
-            "&#039;"
-        );
-
-}
-
-
-/* =========================================================
-   READY
-========================================================= */
-
-console.log(
-    "========================================"
-);
-
-console.log(
-    "Dhyne's Private Dashboard loaded ❤️"
-);
-
-console.log(
-    "Firebase Project:",
-    firebaseConfig.projectId
-);
-
-console.log(
-    "Firestore Collection:",
-    "responses"
-);
-
-console.log(
-    "========================================"
-);
