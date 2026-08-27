@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dhyne's Private Space ❤️</title>
+
+    <!-- ADMIN CSS -->
+    <link
+        rel="stylesheet"
+        href="admin.css"
+    >
+
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         BACKGROUND HEARTS
+    ====================================================== -->
+
+    <div id="adminHearts"></div>
+
+
+    <!-- =====================================================
+         LOGIN PAGE
+    ====================================================== -->
+
+    <section
+        id="loginSection"
+        class="admin-page active"
+    >
+
+        <div class="login-card">
+
+            <div class="login-heart">
+                ♥
+            </div>
+
+
+            <div class="admin-label">
+                PRIVATE SPACE
+            </div>
+
+
+            <h1>
+                Dhyne's
+                <span>Dashboard</span>
+            </h1>
+
+
+            <p class="login-description">
+                This is your private place
+                to see her answer.
+            </p>
+
+
+            <!-- LOGIN FORM -->
+
+            <form id="loginForm">
+
+                <div class="input-group">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        id="email"
+                        type="email"
+                        placeholder="Enter your email"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        id="password"
+                        type="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="login-button"
+                    id="loginButton"
+                >
+                    Enter Dashboard
+                    <span>→</span>
+                </button>
+
+            </form>
+
+
+            <div
+                id="loginError"
+                class="login-error"
+            ></div>
+
+
+            <div class="private-note">
+                Only you can access this page.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         DASHBOARD PAGE
+    ====================================================== -->
+
+    <section
+        id="dashboardSection"
+        class="admin-page"
+    >
+
+        <div class="dashboard-wrapper">
+
+
+            <!-- =================================================
+                 HEADER
+            ================================================== -->
+
+            <header class="dashboard-header">
+
+                <div>
+
+                    <div class="admin-label">
+                        PRIVATE SPACE
+                    </div>
+
+                    <h1>
+                        Dhyne's
+                        <span>Dashboard</span>
+                    </h1>
+
+                    <p>
+                        Your little corner of the story. ❤️
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="logoutButton"
+                    class="logout-button"
+                    type="button"
+                >
+                    Logout
+                </button>
+
+            </header>
+
+
+            <!-- =================================================
+                 DIVIDER
+            ================================================== -->
+
+            <div class="dashboard-divider"></div>
+
+
+            <!-- =================================================
+                 RESPONSE SECTION
+            ================================================== -->
+
+            <div class="response-heading">
+
+                <div>
+
+                    <div class="admin-label">
+                        CELINA'S RESPONSE
+                    </div>
+
+                    <h2>
+                        Did she answer?
+                    </h2>
+
+                </div>
+
+
+                <button
+                    id="refreshButton"
+                    class="refresh-button"
+                    type="button"
+                >
+                    ↻ Refresh
+                </button>
+
+            </div>
+
+
+            <!-- =================================================
+                 LOADING
+            ================================================== -->
+
+            <div
+                id="loading"
+                class="loading-box"
+            >
+
+                <div class="loading-heart">
+                    ♥
+                </div>
+
+                <p>
+                    Checking for her answer...
+                </p>
+
+            </div>
+
+
+            <!-- =================================================
+                 ANSWER AREA
+            ================================================== -->
+
+            <div
+                id="answerArea"
+                class="answer-area"
+            ></div>
+
+
+            <!-- =================================================
+                 FOOTER MESSAGE
+            ================================================== -->
+
+            <div class="dashboard-footer">
+
+                <span>
+                    Made with love by Dhyne
+                </span>
+
+                <span>
+                    ♥
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ADMIN JAVASCRIPT
+    ====================================================== -->
+
+    <script
+        type="module"
+        src="admin.js"
+    ></script>
+
+</body>
+
+</html>

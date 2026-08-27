@@ -1,0 +1,1285 @@
+/* =========================================================
+   DHYNE'S PRIVATE DASHBOARD
+   ADMIN CSS
+========================================================= */
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(255, 72, 132, 0.12),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(180, 35, 90, 0.08),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #11030a 0%,
+            #240714 48%,
+            #0d0208 100%
+        );
+
+    color: #fff7fa;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   ADMIN PAGE SYSTEM
+========================================================= */
+
+.admin-page {
+    min-height: 100vh;
+
+    width: 100%;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding:
+        60px
+        20px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.admin-page.active {
+    display: flex;
+
+    animation:
+        adminFadeIn
+        0.6s
+        ease
+        forwards;
+}
+
+@keyframes adminFadeIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   BACKGROUND DECORATION
+========================================================= */
+
+body::before {
+    content: "";
+
+    position: fixed;
+
+    width: 600px;
+    height: 600px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 52, 119, 0.06),
+            transparent 70%
+        );
+
+    top: -300px;
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+/* =========================================================
+   FLOATING HEARTS
+========================================================= */
+
+#adminHearts {
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+.admin-floating-heart {
+    position: absolute;
+
+    bottom: -40px;
+
+    color:
+        rgba(
+            255,
+            83,
+            140,
+            0.25
+        );
+
+    animation:
+        adminFloatHeart
+        linear
+        forwards;
+}
+
+@keyframes adminFloatHeart {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform:
+            translateY(-110vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+
+}
+
+
+/* =========================================================
+   LOGIN CARD
+========================================================= */
+
+.login-card {
+    width:
+        min(
+            500px,
+            100%
+        );
+
+    padding:
+        50px
+        42px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            101,
+            151,
+            0.25
+        );
+
+    border-radius:
+        30px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.035
+        );
+
+    backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        0 30px 100px
+        rgba(
+            0,
+            0,
+            0,
+            0.4
+        );
+
+    position: relative;
+
+    z-index: 3;
+}
+
+
+/* =========================================================
+   LOGIN HEART
+========================================================= */
+
+.login-heart {
+    width: 75px;
+    height: 75px;
+
+    margin:
+        0
+        auto
+        25px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(
+            255,
+            70,
+            125,
+            0.08
+        );
+
+    border:
+        1px solid
+        rgba(
+            255,
+            86,
+            139,
+            0.3
+        );
+
+    color: #ff528d;
+
+    font-size: 32px;
+
+    box-shadow:
+        0 0 45px
+        rgba(
+            255,
+            65,
+            130,
+            0.12
+        );
+
+    animation:
+        dashboardHeartPulse
+        2s
+        ease-in-out
+        infinite;
+}
+
+@keyframes dashboardHeartPulse {
+
+    0%,
+    100% {
+        transform:
+            scale(1);
+    }
+
+    50% {
+        transform:
+            scale(1.08);
+    }
+
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.admin-label {
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    color:
+        #d982a0;
+
+    text-transform:
+        uppercase;
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================================================
+   LOGIN TITLE
+========================================================= */
+
+.login-card h1 {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            40px,
+            8vw,
+            58px
+        );
+
+    line-height: 1.05;
+
+    font-weight: 500;
+
+    margin-bottom: 22px;
+}
+
+.login-card h1 span {
+    color:
+        #ff5c91;
+}
+
+
+/* =========================================================
+   LOGIN DESCRIPTION
+========================================================= */
+
+.login-description {
+    color:
+        #c8a2b1;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+
+    margin-bottom: 35px;
+}
+
+
+/* =========================================================
+   INPUT GROUP
+========================================================= */
+
+.input-group {
+    text-align: left;
+
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color:
+        #c995a8;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+.input-group input {
+    width: 100%;
+
+    padding:
+        16px
+        18px;
+
+    border-radius:
+        14px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+
+    background:
+        rgba(
+            0,
+            0,
+            0,
+            0.2
+        );
+
+    color: white;
+
+    outline: none;
+
+    font-size: 15px;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+}
+
+.input-group input::placeholder {
+    color:
+        #765363;
+}
+
+.input-group input:focus {
+    border-color:
+        #e95b8b;
+
+    background:
+        rgba(
+            255,
+            70,
+            125,
+            0.035
+        );
+
+    box-shadow:
+        0 0 0 3px
+        rgba(
+            255,
+            70,
+            125,
+            0.07
+        );
+}
+
+
+/* =========================================================
+   LOGIN BUTTON
+========================================================= */
+
+.login-button {
+    width: 100%;
+
+    margin-top: 12px;
+
+    padding:
+        17px
+        22px;
+
+    border-radius:
+        50px;
+
+    border:
+        1px solid
+        #ff6094;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff4c87,
+            #d92867
+        );
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 12px 35px
+        rgba(
+            227,
+            38,
+            104,
+            0.25
+        );
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.login-button span {
+    margin-left: 8px;
+}
+
+.login-button:hover {
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 18px 45px
+        rgba(
+            255,
+            54,
+            119,
+            0.35
+        );
+}
+
+.login-button:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   LOGIN ERROR
+========================================================= */
+
+.login-error {
+    min-height: 25px;
+
+    margin-top: 18px;
+
+    color:
+        #ff8cad;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   PRIVATE NOTE
+========================================================= */
+
+.private-note {
+    margin-top: 28px;
+
+    color:
+        #765260;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   DASHBOARD WRAPPER
+========================================================= */
+
+.dashboard-wrapper {
+    width:
+        min(
+            1050px,
+            100%
+        );
+
+    position: relative;
+
+    z-index: 3;
+}
+
+
+/* =========================================================
+   DASHBOARD HEADER
+========================================================= */
+
+.dashboard-header {
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+.dashboard-header h1 {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            42px,
+            6vw,
+            68px
+        );
+
+    line-height: 1;
+
+    font-weight: 500;
+
+    margin-bottom: 18px;
+}
+
+.dashboard-header h1 span {
+    color:
+        #ff5c91;
+}
+
+.dashboard-header p {
+    color:
+        #a98896;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   LOGOUT BUTTON
+========================================================= */
+
+.logout-button {
+    padding:
+        12px
+        22px;
+
+    border-radius:
+        50px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.14
+        );
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.025
+        );
+
+    color:
+        #c5a5b2;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition:
+        all 0.25s ease;
+}
+
+.logout-button:hover {
+    color: white;
+
+    border-color:
+        #a95c78;
+
+    background:
+        rgba(
+            255,
+            70,
+            125,
+            0.06
+        );
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.dashboard-divider {
+    width: 100%;
+
+    height: 1px;
+
+    margin:
+        45px
+        0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(
+                255,
+                255,
+                255,
+                0.12
+            ),
+            rgba(
+                255,
+                80,
+                140,
+                0.3
+            ),
+            rgba(
+                255,
+                255,
+                255,
+                0.02
+            )
+        );
+}
+
+
+/* =========================================================
+   RESPONSE HEADING
+========================================================= */
+
+.response-heading {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 30px;
+}
+
+.response-heading h2 {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            28px,
+            5vw,
+            42px
+        );
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   REFRESH BUTTON
+========================================================= */
+
+.refresh-button {
+    padding:
+        11px
+        18px;
+
+    border-radius:
+        50px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            90,
+            145,
+            0.3
+        );
+
+    background:
+        rgba(
+            255,
+            70,
+            125,
+            0.04
+        );
+
+    color:
+        #d7a9b9;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    transition:
+        all 0.25s ease;
+}
+
+.refresh-button:hover {
+    border-color:
+        #ff6094;
+
+    color: white;
+
+    background:
+        rgba(
+            255,
+            70,
+            125,
+            0.08
+        );
+}
+
+
+/* =========================================================
+   LOADING BOX
+========================================================= */
+
+.loading-box {
+    min-height: 260px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px;
+
+    border-radius:
+        25px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.025
+        );
+
+    text-align: center;
+}
+
+.loading-heart {
+    color:
+        #ff548d;
+
+    font-size: 45px;
+
+    margin-bottom: 18px;
+
+    animation:
+        dashboardHeartPulse
+        1.5s
+        ease-in-out
+        infinite;
+}
+
+.loading-box p {
+    color:
+        #a98a97;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   ANSWER AREA
+========================================================= */
+
+.answer-area {
+    width: 100%;
+}
+
+
+/* =========================================================
+   ANSWER BOX
+========================================================= */
+
+.answer-box {
+    width: 100%;
+
+    min-height: 300px;
+
+    padding:
+        50px
+        35px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    border-radius:
+        28px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.1
+        );
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.025
+        );
+
+    animation:
+        answerAppear
+        0.7s
+        ease
+        forwards;
+}
+
+@keyframes answerAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(20px)
+            scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+
+/* =========================================================
+   YES ANSWER
+========================================================= */
+
+.answer-box.yes-answer {
+    border-color:
+        rgba(
+            255,
+            78,
+            137,
+            0.4
+        );
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(
+                255,
+                60,
+                125,
+                0.08
+            ),
+            rgba(
+                255,
+                255,
+                255,
+                0.025
+            )
+        );
+
+    box-shadow:
+        0 25px 80px
+        rgba(
+            255,
+            45,
+            115,
+            0.12
+        );
+}
+
+
+/* =========================================================
+   ANSWER ICON
+========================================================= */
+
+.answer-icon {
+    font-size: 65px;
+
+    margin-bottom: 22px;
+
+    animation:
+        dashboardHeartPulse
+        2s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================================================
+   ANSWER TITLE
+========================================================= */
+
+.answer-box h2 {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            34px,
+            6vw,
+            55px
+        );
+
+    line-height: 1.1;
+
+    font-weight: 500;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   ANSWER TEXT
+========================================================= */
+
+.answer-box p {
+    width:
+        min(
+            650px,
+            100%
+        );
+
+    color:
+        #d0adb9;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    margin-bottom: 10px;
+}
+
+
+/* =========================================================
+   RESPONSE DATE
+========================================================= */
+
+.answer-date {
+    margin-top: 25px;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    color:
+        #876673;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   DASHBOARD FOOTER
+========================================================= */
+
+.dashboard-footer {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 45px;
+
+    color:
+        #6e4a58;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .admin-page {
+        padding:
+            45px
+            18px;
+    }
+
+    .login-card {
+        padding:
+            42px
+            28px;
+    }
+
+    .dashboard-header {
+        flex-direction: column;
+    }
+
+    .logout-button {
+        align-self: flex-start;
+    }
+
+    .dashboard-divider {
+        margin:
+            35px
+            0;
+    }
+
+    .response-heading {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .refresh-button {
+        align-self: flex-start;
+    }
+
+    .answer-box {
+        padding:
+            45px
+            22px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 520px) {
+
+    .admin-page {
+        padding:
+            35px
+            15px;
+    }
+
+    .login-card {
+        padding:
+            38px
+            22px;
+
+        border-radius:
+            25px;
+    }
+
+    .admin-label {
+        font-size: 9px;
+
+        letter-spacing: 4px;
+    }
+
+    .login-card h1 {
+        font-size: 42px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 43px;
+    }
+
+    .response-heading h2 {
+        font-size: 31px;
+    }
+
+    .answer-box {
+        min-height: 270px;
+
+        padding:
+            38px
+            18px;
+    }
+
+    .answer-icon {
+        font-size: 55px;
+    }
+
+    .answer-box h2 {
+        font-size: 34px;
+    }
+
+    .answer-box p {
+        font-size: 16px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .login-card {
+        padding:
+            32px
+            17px;
+    }
+
+    .login-card h1 {
+        font-size: 36px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 38px;
+    }
+
+}

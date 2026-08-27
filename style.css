@@ -1,0 +1,1396 @@
+/* =========================================================
+   FOR CELINA
+   MAIN WEBSITE STYLES
+   Dhyne → Celina ❤️
+========================================================= */
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(255, 65, 130, 0.12),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(150, 20, 70, 0.12),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #18050f 0%,
+            #2b0919 45%,
+            #12030a 100%
+        );
+
+    color: #fff7fa;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+/* =========================================================
+   PAGE SYSTEM
+========================================================= */
+
+.page {
+    min-height: 100vh;
+    width: 100%;
+
+    display: none;
+
+    position: relative;
+
+    padding:
+        80px
+        24px;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.page.active {
+    display: flex;
+
+    animation:
+        pageFadeIn
+        0.8s
+        ease
+        forwards;
+}
+
+@keyframes pageFadeIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   BACKGROUND GLOW
+========================================================= */
+
+.page::before {
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 55, 120, 0.08),
+            transparent 70%
+        );
+
+    top: -200px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   FLOATING HEART CONTAINER
+========================================================= */
+
+#hearts {
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 20;
+}
+
+.floating-heart {
+    position: absolute;
+
+    bottom: -40px;
+
+    color: rgba(255, 82, 139, 0.45);
+
+    animation:
+        floatHeart
+        7s
+        linear
+        forwards;
+
+    pointer-events: none;
+}
+
+@keyframes floatHeart {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg)
+            scale(0.8);
+
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    50% {
+        transform:
+            translateY(-50vh)
+            rotate(20deg)
+            scale(1);
+    }
+
+    100% {
+        transform:
+            translateY(-115vh)
+            rotate(-20deg)
+            scale(1.2);
+
+        opacity: 0;
+    }
+
+}
+
+
+/* =========================================================
+   HERO / PAGE 1
+========================================================= */
+
+.hero-content {
+    width: min(900px, 100%);
+
+    text-align: center;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.small-label {
+    margin-bottom: 28px;
+
+    font-size: 13px;
+
+    letter-spacing: 7px;
+
+    color: #e5a6ba;
+
+    text-transform: uppercase;
+}
+
+.main-title {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            48px,
+            8vw,
+            100px
+        );
+
+    line-height: 1.02;
+
+    font-weight: 500;
+
+    letter-spacing: -2px;
+
+    color: #fff8fb;
+
+    text-shadow:
+        0 0 40px
+        rgba(255, 77, 135, 0.12);
+}
+
+.title-line {
+    width: 110px;
+    height: 2px;
+
+    margin: 38px auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #ff4d8b,
+            transparent
+        );
+
+    box-shadow:
+        0 0 20px
+        rgba(255, 77, 139, 0.5);
+}
+
+.hero-subtitle {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            23px,
+            4vw,
+            36px
+        );
+
+    line-height: 1.5;
+
+    color: #fff4f7;
+
+    margin-bottom: 20px;
+}
+
+.hero-description {
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    color: #c99baa;
+
+    margin-bottom: 42px;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.primary-button,
+.next-button,
+.answer-button {
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.primary-button {
+    border: 1px solid #e85a8a;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff4d87,
+            #db2867
+        );
+
+    color: white;
+
+    padding:
+        17px
+        34px;
+
+    border-radius: 50px;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    box-shadow:
+        0 12px 40px
+        rgba(225, 39, 102, 0.28);
+}
+
+.primary-button span {
+    margin-left: 8px;
+}
+
+.primary-button:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 18px 50px
+        rgba(255, 58, 125, 0.42);
+}
+
+.primary-button:active {
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   STORY PAGES
+========================================================= */
+
+.story-container {
+    width: min(760px, 100%);
+
+    text-align: center;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.chapter-label {
+    margin-bottom: 25px;
+
+    font-size: 12px;
+
+    letter-spacing: 6px;
+
+    color: #e36b98;
+
+    text-transform: uppercase;
+}
+
+.story-container h2 {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            38px,
+            6vw,
+            64px
+        );
+
+    font-weight: 500;
+
+    line-height: 1.15;
+
+    margin-bottom: 40px;
+
+    color: #fff7fa;
+}
+
+.story-text {
+    max-width: 680px;
+
+    margin: 0 auto;
+}
+
+.story-text p {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            18px,
+            2.5vw,
+            22px
+        );
+
+    line-height: 1.9;
+
+    color: #dcb6c3;
+
+    margin-bottom: 25px;
+}
+
+.story-text strong {
+    color: #ff6294;
+}
+
+.story-text em {
+    color: #fff1f5;
+}
+
+
+/* =========================================================
+   NEXT BUTTON
+========================================================= */
+
+.next-button {
+    margin-top: 30px;
+
+    padding:
+        15px
+        28px;
+
+    border-radius: 40px;
+
+    border: 1px solid #a94c70;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.025
+        );
+
+    color: #fff5f8;
+
+    font-size: 15px;
+}
+
+.next-button span {
+    margin-left: 8px;
+
+    color: #ff5c91;
+}
+
+.next-button:hover {
+    transform: translateY(-3px);
+
+    border-color: #ff5c91;
+
+    background:
+        rgba(
+            255,
+            74,
+            132,
+            0.08
+        );
+
+    box-shadow:
+        0 10px 35px
+        rgba(
+            255,
+            60,
+            125,
+            0.16
+        );
+}
+
+
+/* =========================================================
+   QUOTE CARD
+========================================================= */
+
+.quote-card {
+    max-width: 620px;
+
+    margin:
+        45px
+        auto
+        20px;
+
+    padding:
+        30px
+        35px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            105,
+            150,
+            0.25
+        );
+
+    border-radius: 22px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.025
+        );
+
+    box-shadow:
+        inset 0 0 40px
+        rgba(
+            255,
+            60,
+            120,
+            0.025
+        );
+}
+
+.quote-mark {
+    display: block;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 65px;
+
+    line-height: 0.6;
+
+    color: #ff4f89;
+
+    margin-bottom: 20px;
+}
+
+.quote-card p {
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 19px;
+
+    line-height: 1.7;
+
+    color: #e7c6d0;
+}
+
+
+/* =========================================================
+   HIGHLIGHT HEART
+========================================================= */
+
+.highlight-heart {
+    width: 90px;
+    height: 90px;
+
+    margin:
+        45px
+        auto
+        25px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            82,
+            139,
+            0.35
+        );
+
+    color: #ff528d;
+
+    font-size: 35px;
+
+    background:
+        rgba(
+            255,
+            60,
+            120,
+            0.06
+        );
+
+    box-shadow:
+        0 0 50px
+        rgba(
+            255,
+            60,
+            120,
+            0.15
+        );
+
+    animation:
+        heartPulse
+        2.2s
+        ease-in-out
+        infinite;
+}
+
+@keyframes heartPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+
+}
+
+
+/* =========================================================
+   MEMORY CARD
+========================================================= */
+
+.memory-card {
+    width: min(500px, 100%);
+
+    margin:
+        45px
+        auto
+        25px;
+
+    padding:
+        35px
+        25px;
+
+    border-radius: 24px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            105,
+            150,
+            0.25
+        );
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(
+                255,
+                255,
+                255,
+                0.04
+            ),
+            rgba(
+                255,
+                60,
+                120,
+                0.035
+            )
+        );
+}
+
+.memory-icon {
+    font-size: 42px;
+
+    margin-bottom: 18px;
+}
+
+.memory-card p {
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 19px;
+
+    line-height: 1.8;
+
+    color: #e7c3cf;
+}
+
+
+/* =========================================================
+   THREE MONTHS CARD
+========================================================= */
+
+.months-card {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 22px;
+
+    margin:
+        45px
+        auto
+        25px;
+
+    padding: 25px;
+
+    width: fit-content;
+
+    border-radius: 25px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            94,
+            145,
+            0.28
+        );
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.025
+        );
+}
+
+.months-card .number {
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 80px;
+
+    line-height: 0.8;
+
+    color: #ff5c92;
+
+    text-shadow:
+        0 0 35px
+        rgba(
+            255,
+            75,
+            135,
+            0.3
+        );
+}
+
+.months-text {
+    text-align: left;
+
+    font-size: 13px;
+
+    letter-spacing: 4px;
+
+    line-height: 1.7;
+
+    color: #dcaabd;
+}
+
+
+/* =========================================================
+   HEART MESSAGE
+========================================================= */
+
+.heart-message {
+    margin:
+        40px
+        auto
+        25px;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 21px;
+
+    color: #ff9ab9;
+}
+
+
+/* =========================================================
+   QUESTION PAGE
+========================================================= */
+
+.question-page {
+    min-height: 100vh;
+}
+
+.question-container {
+    width: min(850px, 100%);
+
+    text-align: center;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.question-heart {
+    font-size: 58px;
+
+    color: #ff4e8a;
+
+    margin-bottom: 20px;
+
+    text-shadow:
+        0 0 40px
+        rgba(
+            255,
+            70,
+            130,
+            0.4
+        );
+
+    animation:
+        heartPulse
+        2s
+        ease-in-out
+        infinite;
+}
+
+.question-container h2 {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            32px,
+            5vw,
+            50px
+        );
+
+    font-weight: 500;
+
+    margin-bottom: 25px;
+}
+
+.question-intro {
+    max-width: 650px;
+
+    margin:
+        0
+        auto
+        30px;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 19px;
+
+    line-height: 1.8;
+
+    color: #dcb2c1;
+}
+
+.question-line {
+    width: 100px;
+    height: 2px;
+
+    margin:
+        25px
+        auto
+        35px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #ff4d8b,
+            transparent
+        );
+}
+
+.big-question {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            48px,
+            8vw,
+            90px
+        );
+
+    line-height: 1.05;
+
+    font-weight: 500;
+
+    color: #fff7fa;
+
+    margin-bottom: 35px;
+
+    text-shadow:
+        0 0 50px
+        rgba(
+            255,
+            90,
+            145,
+            0.1
+        );
+}
+
+.question-message {
+    max-width: 700px;
+
+    margin:
+        0
+        auto
+        22px;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(
+            17px,
+            2.5vw,
+            21px
+        );
+
+    line-height: 1.8;
+
+    color: #dcb5c3;
+}
+
+.no-pressure {
+    font-size: 14px;
+
+    line-height: 1.8;
+
+    color: #a77c8b;
+
+    margin-bottom: 35px;
+}
+
+
+/* =========================================================
+   ANSWER BUTTONS
+========================================================= */
+
+.answer-buttons {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 18px;
+
+    flex-wrap: wrap;
+
+    margin-top: 25px;
+}
+
+.answer-button {
+    min-width: 210px;
+
+    padding:
+        18px
+        28px;
+
+    border-radius: 50px;
+
+    font-size: 16px;
+
+    font-weight: 600;
+}
+
+.yes-button {
+    border:
+        1px solid
+        #ff5b92;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff4c87,
+            #dc2868
+        );
+
+    color: white;
+
+    box-shadow:
+        0 15px 45px
+        rgba(
+            240,
+            43,
+            108,
+            0.28
+        );
+}
+
+.yes-button:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 20px 55px
+        rgba(
+            255,
+            54,
+            120,
+            0.4
+        );
+}
+
+.time-button {
+    border:
+        1px solid
+        #8e526c;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.02
+        );
+
+    color: #f4dfe6;
+}
+
+.time-button:hover {
+    transform: translateY(-4px);
+
+    border-color:
+        #c77a99;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.04
+        );
+}
+
+
+/* =========================================================
+   DISABLED BUTTON
+========================================================= */
+
+.answer-button:disabled {
+    cursor: not-allowed;
+
+    opacity: 0.55;
+
+    transform: none !important;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   RESPONSE STATUS
+========================================================= */
+
+.response-status {
+    min-height: 25px;
+
+    margin-top: 22px;
+
+    font-size: 14px;
+
+    color: #e99ab2;
+
+    transition:
+        opacity 0.3s ease;
+}
+
+
+/* =========================================================
+   FINAL MESSAGE
+========================================================= */
+
+.final-message {
+    width: min(650px, 100%);
+
+    margin:
+        30px
+        auto
+        0;
+
+    padding:
+        35px
+        30px;
+
+    border-radius: 25px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            91,
+            143,
+            0.3
+        );
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.025
+        );
+
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+
+    pointer-events: none;
+}
+
+.final-message.show {
+    opacity: 1;
+
+    transform: translateY(0);
+
+    pointer-events: auto;
+}
+
+.final-message h3 {
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 30px;
+
+    margin-bottom: 18px;
+
+    color: #fff7fa;
+}
+
+.final-message p {
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    color: #dcb6c4;
+
+    margin-bottom: 10px;
+}
+
+.final-heart {
+    font-size: 48px;
+
+    margin-bottom: 15px;
+
+    animation:
+        heartPulse
+        1.5s
+        ease-in-out
+        infinite;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .page {
+        padding:
+            70px
+            20px;
+    }
+
+    .small-label {
+        font-size: 11px;
+
+        letter-spacing: 5px;
+    }
+
+    .main-title {
+        letter-spacing: -1px;
+    }
+
+    .story-container h2 {
+        margin-bottom: 30px;
+    }
+
+    .story-text p {
+        font-size: 18px;
+
+        line-height: 1.8;
+    }
+
+    .quote-card {
+        padding: 25px;
+    }
+
+    .months-card {
+        gap: 16px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 520px) {
+
+    .page {
+        padding:
+            55px
+            17px;
+    }
+
+    .small-label {
+        margin-bottom: 20px;
+
+        font-size: 9px;
+
+        letter-spacing: 4px;
+    }
+
+    .main-title {
+        font-size: 48px;
+
+        line-height: 1.05;
+    }
+
+    .title-line {
+        margin: 28px auto;
+    }
+
+    .hero-subtitle {
+        font-size: 23px;
+    }
+
+    .hero-description {
+        font-size: 15px;
+
+        line-height: 1.7;
+
+        margin-bottom: 30px;
+    }
+
+    .primary-button {
+        width: 100%;
+
+        max-width: 300px;
+    }
+
+    .story-container h2 {
+        font-size: 38px;
+    }
+
+    .story-text p {
+        font-size: 17px;
+
+        line-height: 1.75;
+    }
+
+    .next-button {
+        width: 100%;
+
+        max-width: 320px;
+    }
+
+    .quote-card {
+        margin-top: 30px;
+
+        padding:
+            25px
+            20px;
+    }
+
+    .quote-card p {
+        font-size: 17px;
+    }
+
+    .memory-card {
+        padding: 28px 20px;
+    }
+
+    .months-card {
+        width: 100%;
+
+        max-width: 300px;
+
+        padding: 22px;
+
+        justify-content: center;
+    }
+
+    .months-card .number {
+        font-size: 65px;
+    }
+
+    .months-text {
+        font-size: 11px;
+
+        letter-spacing: 3px;
+    }
+
+    .question-heart {
+        font-size: 48px;
+    }
+
+    .question-intro {
+        font-size: 17px;
+    }
+
+    .big-question {
+        font-size: 49px;
+
+        line-height: 1.08;
+    }
+
+    .question-message {
+        font-size: 17px;
+
+        line-height: 1.75;
+    }
+
+    .answer-buttons {
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    .answer-button {
+        width: 100%;
+
+        max-width: 330px;
+    }
+
+    .final-message {
+        padding:
+            30px
+            20px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .main-title {
+        font-size: 41px;
+    }
+
+    .story-container h2 {
+        font-size: 33px;
+    }
+
+    .big-question {
+        font-size: 42px;
+    }
+
+}
