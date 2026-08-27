@@ -1,14 +1,3 @@
-/* =========================================================
-   FOR CELINA
-   MAIN WEBSITE STYLES
-   DHYNE ❤️ CELINA
-========================================================= */
-
-
-/* =========================================================
-   RESET
-========================================================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -50,9 +39,9 @@ body {
 }
 
 
-/* =========================================================
-   PAGE SYSTEM
-========================================================= */
+/* =====================================================
+   PAGE
+===================================================== */
 
 .page {
     min-height: 100vh;
@@ -62,9 +51,7 @@ body {
 
     position: relative;
 
-    padding:
-        80px
-        24px;
+    padding: 80px 24px;
 
     align-items: center;
     justify-content: center;
@@ -95,39 +82,9 @@ body {
 }
 
 
-/* =========================================================
-   BACKGROUND GLOW
-========================================================= */
-
-.page::before {
-    content: "";
-
-    position: absolute;
-
-    width: 500px;
-    height: 500px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(255, 55, 120, 0.08),
-            transparent 70%
-        );
-
-    top: -200px;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   FLOATING HEARTS
-========================================================= */
+/* =====================================================
+   HEARTS
+===================================================== */
 
 #hearts {
     position: fixed;
@@ -146,15 +103,19 @@ body {
 
     bottom: -40px;
 
-    color: rgba(255, 82, 139, 0.45);
+    color:
+        rgba(
+            255,
+            82,
+            139,
+            0.45
+        );
 
     animation:
         floatHeart
         7s
         linear
         forwards;
-
-    pointer-events: none;
 }
 
 @keyframes floatHeart {
@@ -162,8 +123,7 @@ body {
     0% {
         transform:
             translateY(0)
-            rotate(0deg)
-            scale(0.8);
+            rotate(0deg);
 
         opacity: 0;
     }
@@ -172,18 +132,10 @@ body {
         opacity: 1;
     }
 
-    50% {
-        transform:
-            translateY(-50vh)
-            rotate(20deg)
-            scale(1);
-    }
-
     100% {
         transform:
             translateY(-115vh)
-            rotate(-20deg)
-            scale(1.2);
+            rotate(-20deg);
 
         opacity: 0;
     }
@@ -191,115 +143,16 @@ body {
 }
 
 
-/* =========================================================
-   MUSIC BUTTON
-========================================================= */
-
-.music-button {
-    position: fixed;
-
-    top: 24px;
-    right: 24px;
-
-    width: 52px;
-    height: 52px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    border:
-        1px solid
-        rgba(
-            255,
-            105,
-            150,
-            0.35
-        );
-
-    background:
-        rgba(
-            35,
-            5,
-            18,
-            0.82
-        );
-
-    color: #fff;
-
-    font-size: 20px;
-
-    cursor: pointer;
-
-    backdrop-filter:
-        blur(12px);
-
-    -webkit-backdrop-filter:
-        blur(12px);
-
-    box-shadow:
-        0 8px 30px
-        rgba(
-            0,
-            0,
-            0,
-            0.3
-        );
-
-    z-index: 100;
-
-    transition:
-        transform 0.25s ease,
-        background 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-.music-button:hover {
-
-    transform:
-        translateY(-3px)
-        scale(1.04);
-
-    border-color:
-        #ff6094;
-
-    background:
-        rgba(
-            255,
-            70,
-            125,
-            0.12
-        );
-
-    box-shadow:
-        0 12px 35px
-        rgba(
-            255,
-            60,
-            125,
-            0.2
-        );
-
-}
-
-.music-button:active {
-
-    transform:
-        scale(0.94);
-
-}
-
-
-/* =========================================================
-   HERO / PAGE 1
-========================================================= */
+/* =====================================================
+   HERO
+===================================================== */
 
 .hero-content {
-    width: min(900px, 100%);
+    width:
+        min(
+            900px,
+            100%
+        );
 
     text-align: center;
 
@@ -328,22 +181,16 @@ body {
 
     font-size:
         clamp(
-            48px,
+            50px,
             8vw,
             100px
         );
 
-    line-height: 1.02;
+    line-height: 1.05;
 
     font-weight: 500;
 
-    letter-spacing: -2px;
-
     color: #fff8fb;
-
-    text-shadow:
-        0 0 40px
-        rgba(255, 77, 135, 0.12);
 }
 
 .title-line {
@@ -359,16 +206,11 @@ body {
             #ff4d8b,
             transparent
         );
-
-    box-shadow:
-        0 0 20px
-        rgba(255, 77, 139, 0.5);
 }
 
 .hero-subtitle {
     font-family:
         Georgia,
-        "Times New Roman",
         serif;
 
     font-size:
@@ -379,8 +221,6 @@ body {
         );
 
     line-height: 1.5;
-
-    color: #fff4f7;
 
     margin-bottom: 20px;
 }
@@ -396,9 +236,9 @@ body {
 }
 
 
-/* =========================================================
-   PRIMARY BUTTON
-========================================================= */
+/* =====================================================
+   BUTTON
+===================================================== */
 
 .primary-button {
     border:
@@ -415,8 +255,7 @@ body {
     color: white;
 
     padding:
-        17px
-        34px;
+        17px 34px;
 
     border-radius: 50px;
 
@@ -440,10 +279,6 @@ body {
         box-shadow 0.3s ease;
 }
 
-.primary-button span {
-    margin-left: 8px;
-}
-
 .primary-button:hover {
     transform:
         translateY(-4px);
@@ -458,18 +293,21 @@ body {
         );
 }
 
-.primary-button:active {
-    transform:
-        translateY(-1px);
+.primary-button span {
+    margin-left: 8px;
 }
 
 
-/* =========================================================
-   STORY PAGES
-========================================================= */
+/* =====================================================
+   STORY
+===================================================== */
 
 .story-container {
-    width: min(760px, 100%);
+    width:
+        min(
+            760px,
+            100%
+        );
 
     text-align: center;
 
@@ -493,7 +331,6 @@ body {
 .story-container h2 {
     font-family:
         Georgia,
-        "Times New Roman",
         serif;
 
     font-size:
@@ -508,8 +345,6 @@ body {
     line-height: 1.15;
 
     margin-bottom: 40px;
-
-    color: #fff7fa;
 }
 
 .story-text {
@@ -521,7 +356,6 @@ body {
 .story-text p {
     font-family:
         Georgia,
-        "Times New Roman",
         serif;
 
     font-size:
@@ -547,16 +381,15 @@ body {
 }
 
 
-/* =========================================================
+/* =====================================================
    NEXT BUTTON
-========================================================= */
+===================================================== */
 
 .next-button {
     margin-top: 30px;
 
     padding:
-        15px
-        28px;
+        15px 28px;
 
     border-radius: 40px;
 
@@ -581,14 +414,7 @@ body {
     transition:
         transform 0.3s ease,
         background 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-.next-button span {
-    margin-left: 8px;
-
-    color: #ff5c91;
+        border-color 0.3s ease;
 }
 
 .next-button:hover {
@@ -605,33 +431,27 @@ body {
             132,
             0.08
         );
+}
 
-    box-shadow:
-        0 10px 35px
-        rgba(
-            255,
-            60,
-            125,
-            0.16
-        );
+.next-button span {
+    color: #ff5c91;
+
+    margin-left: 8px;
 }
 
 
-/* =========================================================
-   QUOTE CARD
-========================================================= */
+/* =====================================================
+   QUOTE
+===================================================== */
 
 .quote-card {
     max-width: 620px;
 
     margin:
-        45px
-        auto
-        20px;
+        45px auto 20px;
 
     padding:
-        30px
-        35px;
+        30px 35px;
 
     border:
         1px solid
@@ -649,15 +469,6 @@ body {
             255,
             255,
             255,
-            0.025
-        );
-
-    box-shadow:
-        inset 0 0 40px
-        rgba(
-            255,
-            60,
-            120,
             0.025
         );
 }
@@ -688,21 +499,21 @@ body {
     line-height: 1.7;
 
     color: #e7c6d0;
+
+    margin-bottom: 12px;
 }
 
 
-/* =========================================================
-   HIGHLIGHT HEART
-========================================================= */
+/* =====================================================
+   HIGHLIGHT
+===================================================== */
 
 .highlight-heart {
     width: 90px;
     height: 90px;
 
     margin:
-        45px
-        auto
-        25px;
+        45px auto 25px;
 
     display: flex;
 
@@ -732,15 +543,6 @@ body {
             0.06
         );
 
-    box-shadow:
-        0 0 50px
-        rgba(
-            255,
-            60,
-            120,
-            0.15
-        );
-
     animation:
         heartPulse
         2.2s
@@ -752,33 +554,32 @@ body {
 
     0%,
     100% {
-        transform:
-            scale(1);
+        transform: scale(1);
     }
 
     50% {
-        transform:
-            scale(1.08);
+        transform: scale(1.08);
     }
 
 }
 
 
-/* =========================================================
-   MEMORY CARD
-========================================================= */
+/* =====================================================
+   MEMORY
+===================================================== */
 
 .memory-card {
-    width: min(500px, 100%);
+    width:
+        min(
+            500px,
+            100%
+        );
 
     margin:
-        45px
-        auto
-        25px;
+        45px auto 25px;
 
     padding:
-        35px
-        25px;
+        35px 25px;
 
     border-radius: 24px;
 
@@ -792,20 +593,11 @@ body {
         );
 
     background:
-        linear-gradient(
-            135deg,
-            rgba(
-                255,
-                255,
-                255,
-                0.04
-            ),
-            rgba(
-                255,
-                60,
-                120,
-                0.035
-            )
+        rgba(
+            255,
+            255,
+            255,
+            0.025
         );
 }
 
@@ -828,9 +620,9 @@ body {
 }
 
 
-/* =========================================================
-   THREE MONTHS CARD
-========================================================= */
+/* =====================================================
+   MONTHS
+===================================================== */
 
 .months-card {
     display: flex;
@@ -841,9 +633,7 @@ body {
     gap: 22px;
 
     margin:
-        45px
-        auto
-        25px;
+        45px auto 25px;
 
     padding: 25px;
 
@@ -876,18 +666,7 @@ body {
 
     font-size: 80px;
 
-    line-height: 0.8;
-
     color: #ff5c92;
-
-    text-shadow:
-        0 0 35px
-        rgba(
-            255,
-            75,
-            135,
-            0.3
-        );
 }
 
 .months-text {
@@ -903,36 +682,16 @@ body {
 }
 
 
-/* =========================================================
-   HEART MESSAGE
-========================================================= */
-
-.heart-message {
-    margin:
-        40px
-        auto
-        25px;
-
-    font-family:
-        Georgia,
-        serif;
-
-    font-size: 21px;
-
-    color: #ff9ab9;
-}
-
-
-/* =========================================================
-   QUESTION PAGE
-========================================================= */
-
-.question-page {
-    min-height: 100vh;
-}
+/* =====================================================
+   QUESTION
+===================================================== */
 
 .question-container {
-    width: min(850px, 100%);
+    width:
+        min(
+            850px,
+            100%
+        );
 
     text-align: center;
 
@@ -948,15 +707,6 @@ body {
 
     margin-bottom: 20px;
 
-    text-shadow:
-        0 0 40px
-        rgba(
-            255,
-            70,
-            130,
-            0.4
-        );
-
     animation:
         heartPulse
         2s
@@ -967,7 +717,6 @@ body {
 .question-container h2 {
     font-family:
         Georgia,
-        "Times New Roman",
         serif;
 
     font-size:
@@ -982,13 +731,27 @@ body {
     margin-bottom: 25px;
 }
 
+.question-line {
+    width: 100px;
+    height: 2px;
+
+    margin:
+        25px auto 35px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #ff4d8b,
+            transparent
+        );
+}
+
 .question-intro {
     max-width: 650px;
 
     margin:
-        0
-        auto
-        30px;
+        0 auto 30px;
 
     font-family:
         Georgia,
@@ -1001,28 +764,9 @@ body {
     color: #dcb2c1;
 }
 
-.question-line {
-    width: 100px;
-    height: 2px;
-
-    margin:
-        25px
-        auto
-        35px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            #ff4d8b,
-            transparent
-        );
-}
-
 .big-question {
     font-family:
         Georgia,
-        "Times New Roman",
         serif;
 
     font-size:
@@ -1036,38 +780,20 @@ body {
 
     font-weight: 500;
 
-    color: #fff7fa;
-
     margin-bottom: 35px;
-
-    text-shadow:
-        0 0 50px
-        rgba(
-            255,
-            90,
-            145,
-            0.1
-        );
 }
 
 .question-message {
     max-width: 700px;
 
     margin:
-        0
-        auto
-        22px;
+        0 auto 22px;
 
     font-family:
         Georgia,
         serif;
 
-    font-size:
-        clamp(
-            17px,
-            2.5vw,
-            21px
-        );
+    font-size: 20px;
 
     line-height: 1.8;
 
@@ -1085,29 +811,27 @@ body {
 }
 
 
-/* =========================================================
-   ANSWER BUTTONS
-========================================================= */
+/* =====================================================
+   ANSWERS
+===================================================== */
 
 .answer-buttons {
     display: flex;
 
     justify-content: center;
+
     align-items: center;
 
     gap: 18px;
 
     flex-wrap: wrap;
-
-    margin-top: 25px;
 }
 
 .answer-button {
     min-width: 210px;
 
     padding:
-        18px
-        28px;
+        18px 28px;
 
     border-radius: 50px;
 
@@ -1119,9 +843,7 @@ body {
 
     transition:
         transform 0.3s ease,
-        box-shadow 0.3s ease,
-        background 0.3s ease,
-        border-color 0.3s ease;
+        box-shadow 0.3s ease;
 }
 
 .yes-button {
@@ -1137,15 +859,6 @@ body {
         );
 
     color: white;
-
-    box-shadow:
-        0 15px 45px
-        rgba(
-            240,
-            43,
-            108,
-            0.28
-        );
 }
 
 .yes-button:hover {
@@ -1184,39 +897,12 @@ body {
 
     border-color:
         #c77a99;
-
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.04
-        );
 }
 
 
-/* =========================================================
-   DISABLED BUTTON
-========================================================= */
-
-.answer-button:disabled {
-    cursor:
-        not-allowed;
-
-    opacity:
-        0.55;
-
-    transform:
-        none !important;
-
-    box-shadow:
-        none;
-}
-
-
-/* =========================================================
-   RESPONSE STATUS
-========================================================= */
+/* =====================================================
+   RESPONSE
+===================================================== */
 
 .response-status {
     min-height: 25px;
@@ -1226,27 +912,20 @@ body {
     font-size: 14px;
 
     color: #e99ab2;
-
-    transition:
-        opacity 0.3s ease;
 }
 
-
-/* =========================================================
-   FINAL MESSAGE
-========================================================= */
-
 .final-message {
-    width: min(650px, 100%);
+    width:
+        min(
+            650px,
+            100%
+        );
 
     margin:
-        30px
-        auto
-        0;
+        30px auto 0;
 
     padding:
-        35px
-        30px;
+        35px 30px;
 
     border-radius: 25px;
 
@@ -1273,11 +952,7 @@ body {
         translateY(20px);
 
     transition:
-        opacity 0.6s ease,
-        transform 0.6s ease;
-
-    pointer-events:
-        none;
+        0.6s ease;
 }
 
 .final-message.show {
@@ -1285,9 +960,6 @@ body {
 
     transform:
         translateY(0);
-
-    pointer-events:
-        auto;
 }
 
 .final-message h3 {
@@ -1298,8 +970,6 @@ body {
     font-size: 30px;
 
     margin-bottom: 18px;
-
-    color: #fff7fa;
 }
 
 .final-message p {
@@ -1320,108 +990,28 @@ body {
     font-size: 48px;
 
     margin-bottom: 15px;
-
-    animation:
-        heartPulse
-        1.5s
-        ease-in-out
-        infinite;
 }
 
 
-/* =========================================================
-   RESPONSIVE — TABLET
-========================================================= */
-
-@media (max-width: 768px) {
-
-    .page {
-        padding:
-            70px
-            20px;
-    }
-
-    .small-label {
-        font-size: 11px;
-
-        letter-spacing: 5px;
-    }
-
-    .main-title {
-        letter-spacing: -1px;
-    }
-
-    .story-container h2 {
-        margin-bottom: 30px;
-    }
-
-    .story-text p {
-        font-size: 18px;
-
-        line-height: 1.8;
-    }
-
-    .quote-card {
-        padding: 25px;
-    }
-
-    .months-card {
-        gap: 16px;
-    }
-
-    .music-button {
-        top: 18px;
-        right: 18px;
-
-        width: 48px;
-        height: 48px;
-
-        font-size: 18px;
-    }
-
-}
-
-
-/* =========================================================
-   RESPONSIVE — MOBILE
-========================================================= */
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media (max-width: 520px) {
 
     .page {
         padding:
-            55px
-            17px;
-    }
-
-    .music-button {
-        top: 14px;
-        right: 14px;
-
-        width: 46px;
-        height: 46px;
-
-        font-size: 17px;
+            55px 17px;
     }
 
     .small-label {
-        margin-bottom: 20px;
-
         font-size: 9px;
 
         letter-spacing: 4px;
     }
 
     .main-title {
-        font-size: 48px;
-
-        line-height: 1.05;
-    }
-
-    .title-line {
-        margin:
-            28px
-            auto;
+        font-size: 47px;
     }
 
     .hero-subtitle {
@@ -1430,16 +1020,12 @@ body {
 
     .hero-description {
         font-size: 15px;
-
-        line-height: 1.7;
-
-        margin-bottom: 30px;
     }
 
     .primary-button {
         width: 100%;
 
-        max-width: 300px;
+        max-width: 320px;
     }
 
     .story-container h2 {
@@ -1455,35 +1041,13 @@ body {
     .next-button {
         width: 100%;
 
-        max-width: 320px;
-    }
-
-    .quote-card {
-        margin-top: 30px;
-
-        padding:
-            25px
-            20px;
-    }
-
-    .quote-card p {
-        font-size: 17px;
-    }
-
-    .memory-card {
-        padding:
-            28px
-            20px;
+        max-width: 330px;
     }
 
     .months-card {
         width: 100%;
 
-        max-width: 300px;
-
-        padding: 22px;
-
-        justify-content: center;
+        max-width: 310px;
     }
 
     .months-card .number {
@@ -1491,68 +1055,28 @@ body {
     }
 
     .months-text {
-        font-size: 11px;
+        font-size: 10px;
 
         letter-spacing: 3px;
     }
 
-    .question-heart {
+    .big-question {
         font-size: 48px;
     }
 
-    .question-intro {
-        font-size: 17px;
-    }
-
-    .big-question {
-        font-size: 49px;
-
-        line-height: 1.08;
-    }
-
+    .question-intro,
     .question-message {
         font-size: 17px;
-
-        line-height: 1.75;
     }
 
     .answer-buttons {
         flex-direction: column;
-
-        width: 100%;
     }
 
     .answer-button {
         width: 100%;
 
         max-width: 330px;
-    }
-
-    .final-message {
-        padding:
-            30px
-            20px;
-    }
-
-}
-
-
-/* =========================================================
-   SMALL PHONES
-========================================================= */
-
-@media (max-width: 360px) {
-
-    .main-title {
-        font-size: 41px;
-    }
-
-    .story-container h2 {
-        font-size: 33px;
-    }
-
-    .big-question {
-        font-size: 42px;
     }
 
 }
