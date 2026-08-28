@@ -1,11 +1,11 @@
 /* =====================================================
    FOR CELINA
-   MAIN JAVASCRIPT
+   MAIN SCRIPT
 ===================================================== */
 
 
 /* =====================================================
-   FIREBASE
+   FIREBASE IMPORTS
 ===================================================== */
 
 import {
@@ -19,6 +19,10 @@ import {
     serverTimestamp
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
+
+/* =====================================================
+   FIREBASE CONFIG
+===================================================== */
 
 const firebaseConfig = {
 
@@ -45,16 +49,24 @@ const firebaseConfig = {
 };
 
 
+/* =====================================================
+   INITIALIZE FIREBASE
+===================================================== */
+
 const app =
-    initializeApp(firebaseConfig);
+    initializeApp(
+        firebaseConfig
+    );
 
 
 const db =
-    getFirestore(app);
+    getFirestore(
+        app
+    );
 
 
 /* =====================================================
-   MUSIC
+   BACKGROUND MUSIC
 ===================================================== */
 
 const backgroundMusic =
@@ -65,29 +77,8 @@ const backgroundMusic =
 
 if (backgroundMusic) {
 
-    backgroundMusic.volume = 0.35;
-
-
-    /*
-     * Try autoplay first.
-     */
-
-    backgroundMusic
-        .play()
-        .then(() => {
-
-            console.log(
-                "Music started automatically 🎵"
-            );
-
-        })
-        .catch(() => {
-
-            console.log(
-                "Browser blocked autoplay."
-            );
-
-        });
+    backgroundMusic.volume =
+        0.35;
 
 }
 
@@ -99,24 +90,67 @@ if (backgroundMusic) {
 function startMusic() {
 
     if (!backgroundMusic) {
+
+        console.error(
+            "Background music element not found."
+        );
+
         return;
+
     }
 
+
+    backgroundMusic.volume =
+        0.35;
+
+
+    const playPromise =
+        backgroundMusic.play();
+
+
+    if (playPromise !== undefined) {
+
+        playPromise
+            .then(() => {
+
+                console.log(
+                    "Background music started successfully."
+                );
+
+            })
+            .catch((error) => {
+
+                console.log(
+                    "Browser blocked music:",
+                    error
+                );
+
+            });
+
+    }
+
+}
+
+
+/* =====================================================
+   TRY AUTOPLAY
+===================================================== */
+
+if (backgroundMusic) {
 
     backgroundMusic
         .play()
         .then(() => {
 
             console.log(
-                "Background music started ❤️"
+                "Autoplay started."
             );
 
         })
-        .catch((error) => {
+        .catch(() => {
 
             console.log(
-                "Music could not start:",
-                error
+                "Autoplay blocked. Waiting for user interaction."
             );
 
         });
@@ -197,8 +231,9 @@ if (openHeartButton) {
         () => {
 
             /*
-             * User interaction allows
-             * mobile browsers to start audio.
+             * This click is the important part.
+             * Mobile browsers allow audio after
+             * a direct user interaction.
              */
 
             startMusic();
@@ -215,7 +250,7 @@ if (openHeartButton) {
 
 
 /* =====================================================
-   NEXT BUTTONS
+   CONTINUE BUTTONS
 ===================================================== */
 
 const nextButtons =
@@ -231,6 +266,14 @@ nextButtons.forEach(
             "click",
             () => {
 
+                /*
+                 * Also try music whenever
+                 * the user interacts.
+                 */
+
+                startMusic();
+
+
                 const nextPage =
                     button.dataset.next;
 
@@ -238,7 +281,7 @@ nextButtons.forEach(
                 if (!nextPage) {
 
                     console.error(
-                        "Missing data-next"
+                        "Missing data-next on button."
                     );
 
                     return;
@@ -258,7 +301,7 @@ nextButtons.forEach(
 
 
 /* =====================================================
-   SAVE RESPONSE
+   SAVE RESPONSE TO FIRESTORE
 ===================================================== */
 
 async function saveResponse(
@@ -307,6 +350,12 @@ async function saveResponse(
         );
 
 
+        console.log(
+            "Response saved:",
+            choice
+        );
+
+
         return true;
 
 
@@ -321,7 +370,7 @@ async function saveResponse(
         if (status) {
 
             status.textContent =
-                "Something went wrong. Please try again.";
+                "We couldn't save your answer. Please try again.";
 
         }
 
@@ -334,7 +383,7 @@ async function saveResponse(
 
 
 /* =====================================================
-   FINAL MESSAGE
+   SHOW FINAL MESSAGE
 ===================================================== */
 
 function showFinalMessage(
@@ -359,7 +408,10 @@ function showFinalMessage(
 
 
     if (status) {
-        status.textContent = "";
+
+        status.textContent =
+            "";
+
     }
 
 
@@ -393,8 +445,13 @@ function showFinalMessage(
             </p>
 
             <p>
-                I'll do my best to make this
-                journey worth it. ❤️
+                I promise to take this one step
+                at a time and make every moment count.
+            </p>
+
+            <p>
+                This is only the beginning
+                of our story. ❤️
             </p>
 
         `;
@@ -403,6 +460,7 @@ function showFinalMessage(
         createHeartBurst();
 
     }
+
 
     else {
 
@@ -422,12 +480,12 @@ function showFinalMessage(
             </p>
 
             <p>
-                I'll respect whatever you feel,
-                Celina.
+                Whatever you decide,
+                I'll respect your feelings, Celina.
             </p>
 
             <p>
-                Thank you for being honest with me. 🤍
+                Thank you for hearing me out.
             </p>
 
         `;
@@ -438,7 +496,7 @@ function showFinalMessage(
 
 
 /* =====================================================
-   YES
+   YES BUTTON
 ===================================================== */
 
 const yesButton =
@@ -453,6 +511,9 @@ if (yesButton) {
         "click",
         async () => {
 
+            startMusic();
+
+
             yesButton.disabled =
                 true;
 
@@ -482,7 +543,7 @@ if (yesButton) {
 
 
 /* =====================================================
-   NEED SOME TIME
+   NEED SOME TIME BUTTON
 ===================================================== */
 
 const timeButton =
@@ -497,6 +558,9 @@ if (timeButton) {
         "click",
         async () => {
 
+            startMusic();
+
+
             timeButton.disabled =
                 true;
 
@@ -526,7 +590,7 @@ if (timeButton) {
 
 
 /* =====================================================
-   FLOATING HEART
+   FLOATING HEARTS
 ===================================================== */
 
 function createFloatingHeart() {
@@ -682,11 +746,11 @@ function createHeartBurst() {
 
 
 /* =====================================================
-   CONSOLE
+   DEBUG INFORMATION
 ===================================================== */
 
 console.log(
-    "ForCelina loaded successfully ❤️"
+    "ForCelina website loaded successfully ❤️"
 );
 
 console.log(
@@ -695,8 +759,8 @@ console.log(
 );
 
 console.log(
-    "Music:",
+    "Background music:",
     backgroundMusic
-        ? "background-music.mp3 loaded"
-        : "Music element missing"
+        ? "Found"
+        : "NOT FOUND"
 );
